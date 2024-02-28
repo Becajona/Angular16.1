@@ -11,6 +11,56 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    
+    .formulario {
+        border: 1px solid #ccc;
+        padding: 20px;
+        width: 500px;
+    }
+    
+    .campo {
+        margin-bottom: 10px;
+    }
+    
+    .campo label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    .campo input,
+    .campo select,
+    .campo textarea {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
+    
+    .campo select {
+        height: 30px;
+    }
+    
+    .campo textarea {
+        height: 100px;
+    }
+    
+    .boton {
+        margin-top: 10px;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        background-color: #000;
+        color: #fff;
+        cursor: pointer;
+    }
+</style>
 
 </head>
 <body>
@@ -25,33 +75,178 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+              Productos
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Catálogo</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#">NuevoProducto</a></li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Proveedores
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Catálogos</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Nuevo Proveedor</a></li>
+            </ul>
           </li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Marcas
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Catálogos</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Nuevo Marca</a></li>
+            </ul>
+          </li>
+
+
+
+         
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        
+          
+          <button class="btn btn-outline-success" type="submit">Crear cuenta</button>
+     
+        
+          <button class="btn btn-outline-success" type="submit">Login</button>
+        
+        
       </div>
     </div>
   </nav>
-  
+
+
+  <h1>Nuevo Producto</h1>
+    <form class="formulario" action="#">
+        <div class="campo">
+            <label for="nombre">Nombre del producto:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="campo">
+            <label for="caracteristicas">Características:</label>
+            <textarea id="caracteristicas" name="caracteristicas" required></textarea>
+        </div>
+        <div class="campo">
+            <label for="categoria">Categoría:</label>
+            <select id="categoria" name="categoria" required>
+                <option value="">Seleccionar...</option>
+                <option value="1">Alimentos</option>
+                <option value="2">Tecnología</option>
+                <option value="3">Ropa</option>
+            </select>
+        </div>
+        <div class="campo">
+            <label for="unidad_medida">Unidad de medida:</label>
+            <select id="unidad_medida" name="unidad_medida" required>
+                <option value="">Seleccionar...</option>
+                <option value="kg">Kilogramos</option>
+                <option value="lt">Litros</option>
+                <option value="uds">Unidades</option>
+            </select>
+        </div>
+        <div class="campo">
+            <label for="pais_origen">País de origen:</label>
+            <select id="pais_origen" name="pais_origen" required>
+                <option value="">Seleccionar...</option>
+                <option value="MX">México</option>
+                <option value="ES">España</option>
+                <option value="US">Estados Unidos</option>
+            </select>
+        </div>
+        <div class="campo">
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" name="cantidad" required>
+        </div>
+        <div class="campo">
+            <label for="costo">Costo:</label>
+            <input type="number" id="costo" name="costo" required>
+        </div>
+        <div class="campo">
+            <label for="fecha_adquisicion">Fecha de adquisición:</label>
+            <input type="date" id="fecha_adquisicion" name="fecha_adquisicion" required>
+        </div>
+        <div class="campo">
+            <label for="foto">Foto:</label>
+            <input type="file" id="foto" name="foto">
+        </div>
+        <button class="boton" type="submit">Agregar</button>
+    </form>
+
+    <br><br><br><br><br><br><br>
+
+    <h1>Nuevo Proveedor</h1>
+    <form class="formulario" action="#">
+        <div class="campo">
+            <label for="nombre">Nombre del producto:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="campo">
+            <label for="caracteristicas">Características:</label>
+            <textarea id="caracteristicas" name="caracteristicas" required></textarea>
+        </div>
+        <div class="campo">
+            <label for="categoria">Categoría:</label>
+            <select id="categoria" name="categoria" required>
+                <option value="">Seleccionar...</option>
+                <option value="1">Alimentos</option>
+                <option value="2">Tecnología</option>
+                <option value="3">Ropa</option>
+            </select>
+        </div>
+        <div class="campo">
+            <label for="unidad_medida">Unidad de medida:</label>
+            <select id="unidad_medida" name="unidad_medida" required>
+                <option value="">Seleccionar...</option>
+                <option value="kg">Kilogramos</option>
+                <option value="lt">Litros</option>
+                <option value="uds">Unidades</option>
+            </select>
+        </div>
+        <div class="campo">
+            <label for="pais_origen">País de origen:</label>
+            <select id="pais_origen" name="pais_origen" required>
+                <option value="">Seleccionar...</option>
+                <option value="MX">México</option>
+                <option value="ES">España</option>
+                <option value="US">Estados Unidos</option>
+            </select>
+        </div>
+        <div class="campo">
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" name="cantidad" required>
+        </div>
+        <div class="campo">
+            <label for="costo">Costo:</label>
+            <input type="number" id="costo" name="costo" required>
+        </div>
+        <div class="campo">
+            <label for="fecha_adquisicion">Fecha de adquisición:</label>
+            <input type="date" id="fecha_adquisicion" name="fecha_adquisicion" required>
+        </div>
+        <div class="campo">
+            <label for="foto">Foto:</label>
+            <input type="file" id="foto" name="foto">
+        </div>
+        <button class="boton" type="submit">Agregar</button>
+    </form>
+
+
+
 </body>
 </html>
