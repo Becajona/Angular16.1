@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
   <style>
     body {
         font-family: Arial, sans-serif;
@@ -57,39 +56,58 @@
     <h1>Nuevo Producto</h1>
 <form class="formulario" action="#">
     <div class="campo">
+        <label for="_id">ID</label>
+        <input type="number" id="_id">
+    </div>
+    <div class="campo">
+        <label for="clave">Clave</label>
+        <input type="text" id="clave">
+    </div>
+    <div class="campo">
         <label for="nombre">Nombre del producto:</label>
         <input type="text" id="nombre" name="nombre" required>
     </div>
     <div class="campo">
-        <label for="caracteristicas">Características:</label>
-        <textarea id="caracteristicas" name="caracteristicas" required></textarea>
+        <label for="descripción">Descripción:</label>
+        <textarea id="descripción" name="descripción" required></textarea>
     </div>
     <div class="campo">
         <label for="categoria">Categoría:</label>
         <select id="categoria" name="categoria" required>
             <option value="">Seleccionar...</option>
-            <option value="1">Alimentos</option>
-            <option value="2">Tecnología</option>
-            <option value="3">Ropa</option>
+            <option value="1">Niños</option>
+            <option value="2">Adultos</option>
+            <option value="3">Adultos Mayores</option>
         </select>
     </div>
     <div class="campo">
-        <label for="unidad_medida">Unidad de medida:</label>
-        <select id="unidad_medida" name="unidad_medida" required>
-            <option value="">Seleccionar...</option>
-            <option value="kg">Kilogramos</option>
-            <option value="lt">Litros</option>
-            <option value="uds">Unidades</option>
-        </select>
+        <label for="marcasid">MarcasID</label>
+        <input type="number" required>
     </div>
     <div class="campo">
-        <label for="pais_origen">País de origen:</label>
+        <label for="version">version</label>
+        <input type="text" id="version">
+    </div>
+    <div class="campo">
+        <label for="pais_origen">Idiomas:</label>
         <select id="pais_origen" name="pais_origen" required>
             <option value="">Seleccionar...</option>
-            <option value="MX">México</option>
-            <option value="ES">España</option>
-            <option value="US">Estados Unidos</option>
+            <option value="MX">Español</option>
+            <option value="ES">Ingles</option>
+            <option value="ES">Chino mandarín</option>
+            <option value="US">Portugués</option>
+            <option value="US">Ruso</option>
+            <option value="US">Japonés</option>
+            <option value="US">Alemán</option>
+            <option value="US">Coreano</option>
+            <option value="US">Francés</option>
+            <option value="US">Italiano</option>
+            <option value="US">Polaco</option>
         </select>
+    </div>
+    <div class="campo">
+        <label for="Jugadores">Jugadores:</label>
+        <input type="number" id="Jugadores" name="Jugadores" required>
     </div>
     <div class="campo">
         <label for="cantidad">Cantidad:</label>
@@ -100,17 +118,74 @@
         <input type="number" id="costo" name="costo" required>
     </div>
     <div class="campo">
-        <label for="fecha_adquisicion">Fecha de adquisición:</label>
-        <input type="date" id="fecha_adquisicion" name="fecha_adquisicion" required>
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" required>
     </div>
     <div class="campo">
         <label for="foto">Foto:</label>
         <input type="file" id="foto" name="foto">
     </div>
+    <div class="campo">
+        <label for="fecha_adquisicion">Fecha de adquisición:</label>
+        <input type="date" id="fecha_adquisicion" name="fecha_adquisicion" required>
+    </div>
+    <div class="campo">
+        <label for="fecha_registro">Fecha de Registro:</label>
+        <input type="date" id="fecha_registro" name="fecha_registro" required>
+    </div>
+    <div class="campo">
+        <label for="cantidad_existente">Cantidad Existente:</label>
+        <input type="number" id="cantidad_existente" name="cantidad_existente" required>
+    </div>
+    <div class="campo">
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required>
+            <option value="">Seleccionar...</option>
+            <option value="1">Vigente</option>
+            <option value="2">Descontinuado</option>
+        </select>
+    </div>
+    <div class="campo">
+        <label for="origen">Origen</label>
+        <input type="text" id="origen">
+    </div>
+    <div class="campo">
+        <label for="proveedor_id">Proveedor ID:</label>
+        <input type="number" id="proveedor_id" name="proveedor_id" required>
+    </div>
     <button class="boton" type="submit">Agregar</button>
 </form>
 
+<!--Formulario proovedores-->
 
+<div class="container mt-5">
+    <form>
+        <div class="form-group">
+            <label for="_id">ID</label>
+            <input type="text" class="form-control" id="_id" value="65b11513d66a2764b2c2741e" readonly>
+        </div>
+        <div class="form-group">
+            <label for="provId">Proveedor ID</label>
+            <input type="text" class="form-control" id="provId" value="1" readonly>
+        </div>
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" value="Proveedor A" readonly>
+        </div>
+        <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <input type="text" class="form-control" id="direccion" value="Calle 123, Ciudad X" readonly>
+        </div>
+        <div class="form-group">
+            <label for="correoElectronico">Correo Electrónico</label>
+            <input type="email" class="form-control" id="correoElectronico" value="proveedor_a@example.com" readonly>
+        </div>
+        <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" class="form-control" id="telefono" value="+1234567890" readonly>
+        </div>
+    </form>
+</div>
 </body>
 </html>
 
