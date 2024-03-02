@@ -5,6 +5,10 @@ import { NuevoProductoComponent } from './productos.videojuegos/nuevo-producto/n
 import { BuscarProductosComponent } from './productos.videojuegos/buscar-productos/buscar-productos.component';
 import { ProveedoresModule } from './proveedores/proveedores.module';
 import { ProductosvideojuegosModule } from './productosvideojuegos/productosvideojuegos.module';
+import { LoginComponent } from './navegacion/login/login.component';
+import { CrearCuentaComponent } from './navegacion/crear-cuenta/crear-cuenta.component';
+import { NuevoProovedorComponent } from './proveedores/nuevo-proovedor/nuevo-proovedor.component';
+import { NuevaMarcaComponent } from './marcas/nueva-marca/nueva-marca.component';
 
 
 const routes: Routes = [
@@ -24,6 +28,22 @@ const routes: Routes = [
         path:'proveedor',
         component: ProveedoresModule
         },
+        {
+          path:'login',
+          component: LoginComponent
+          },
+          {
+            path:'crearCuenta',
+            component: CrearCuentaComponent
+            },
+            {
+              path:'nuevoProveedor',
+              component: NuevoProovedorComponent
+              },
+              {
+                path:'nuevaMarca',
+                component: NuevaMarcaComponent
+                },
 ];
 
 @NgModule({
