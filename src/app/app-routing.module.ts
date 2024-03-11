@@ -9,6 +9,7 @@ import { LoginComponent } from './navegacion/login/login.component';
 import { CrearCuentaComponent } from './navegacion/crear-cuenta/crear-cuenta.component';
 import { NuevoProovedorComponent } from './proveedores/nuevo-proovedor/nuevo-proovedor.component';
 import { NuevaMarcaComponent } from './marcas/nueva-marca/nueva-marca.component';
+import { VideoJuegosService } from './servicios/video-juegos.service';
 
 
 const routes: Routes = [

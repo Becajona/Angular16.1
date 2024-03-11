@@ -11,6 +11,9 @@ import { CatalogoProductosComponent } from './productos.videojuegos/catalogo-pro
 import { NuevoProductoComponent } from './productos.videojuegos/nuevo-producto/nuevo-producto.component';
 import { BuscarProductosComponent } from './productos.videojuegos/buscar-productos/buscar-productos.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +28,7 @@ import { BuscarProductosComponent } from './productos.videojuegos/buscar-product
     NavegacionModule,
     ProductosvideojuegosModule,
     ProveedoresModule,
+    HttpClientModule
     
   ],
   providers: [],
