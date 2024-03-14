@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { VideoJuego } from './apis-jon.interface'; // Importa la interfaz
 import { VideoJuegosService } from 'src/app/servicios/video-juegos.service';
-
+import { ProveedoresService } from 'src/app/servicios/proveedores.service';
 
 
 @NgModule({
@@ -15,7 +15,8 @@ import { VideoJuegosService } from 'src/app/servicios/video-juegos.service';
     //VideoJuego 
   ],
   providers: [
-    VideoJuegosService
+    VideoJuegosService,
+    ProveedoresService
   ]
 })
 export class VideoJuegosModule { }

@@ -12,6 +12,8 @@ import { NuevoProductoComponent } from './productos.videojuegos/nuevo-producto/n
 import { BuscarProductosComponent } from './productos.videojuegos/buscar-productos/buscar-productos.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavegacionModule,
     ProductosvideojuegosModule,
     ProveedoresModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
     
   ],
   providers: [],

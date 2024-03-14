@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy3v6IVj5me6JLoApg/5D1BA5+6S4Zl5n" crossorigin="anonymous">
+    <title>Catalogo de Productos</title>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1>Catálogo de Productos</h1>
+        <br><br>
+    </div>
+    
+    <div>
+        <p>ID: {{ listaProductos[0]._id["$oid"] }}</p>
+        <p>Clave: {{ listaProductos[0].clave }}</p>
+        <p>Nombre: {{ listaProductos[0].nombre }}</p>
+        <p>Categoría: {{ listaProductos[0].categoria.categoria }}</p>
+        <p>Tipo: {{ listaProductos[0].categoria.tipo }}</p>
+        <p>Marcas ID: {{ listaProductos[0].marcasId }}</p>
+        <p>Versión: {{ listaProductos[0].version }}</p>
+        <p>Idiomas: {{ listaProductos[0].idiomas }}</p>
+        <p>Jugadores: {{ listaProductos[0].jugadores }}</p>
+        <p>Descripción: {{ listaProductos[0].descripcion }}</p>
+        <p>Costo: {{ listaProductos[0].costo }}</p>
+        <p>Precio: {{ listaProductos[0].precio }}</p>
+        <p>Foto: {{ listaProductos[0].foto }}</p>
+        <p>Fecha de Adquisición: {{ listaProductos[0].fechaAdquisicion["$date"] }}</p>
+        <p>Fecha de Registro: {{ listaProductos[0].fecharegistro["$date"] }}</p>
+        <p>Cantidad Existente: {{ listaProductos[0].cantidadExistente }}</p>
+        <p>Estado: {{ listaProductos[0].estado }}</p>
+        <p>Origen: {{ listaProductos[0].origen }}</p>
+        <p>Prov ID: {{ listaProductos[0].provId }}</p>
+      </div>
+      
+
+
+<table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Clave</th>
+        <th>Nombre</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of listaProductos">
+        <td>{{ producto._id["$oid"] }}</td>
+        <td>{{ producto.clave }}</td>
+        <td>{{ producto.nombre }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+    
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-b0E2q0tX2lAuzLkXrm5S+EM3qEn1QUBcP8/8AJ5P4+Ua/HKa5F0K8ebasg8FjkF" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy3v6IVj5me6JLoApg/5D1BA5+6S4Zl5n" crossorigin="anonymous"></script>
+
+</body>
+</html>
