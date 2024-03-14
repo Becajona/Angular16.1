@@ -11,8 +11,13 @@ import { CatalogoProductosComponent } from './productos.videojuegos/catalogo-pro
 import { NuevoProductoComponent } from './productos.videojuegos/nuevo-producto/nuevo-producto.component';
 import { BuscarProductosComponent } from './productos.videojuegos/buscar-productos/buscar-productos.component';
 
+
+import { EliminarComponent } from './productosvideojuegos/eliminar/eliminar.component';
+
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+
+import { RouterModule } from '@angular/router';
 
 
 
@@ -22,7 +27,7 @@ import { FormsModule } from '@angular/forms';
     CatalogoProductosComponent,
     NuevoProductoComponent,
     BuscarProductosComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -31,8 +36,8 @@ import { FormsModule } from '@angular/forms';
     ProductosvideojuegosModule,
     ProveedoresModule,
     HttpClientModule,
-    FormsModule
-    
+    FormsModule,
+    RouterModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

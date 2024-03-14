@@ -12,7 +12,7 @@
         <h1>Catálogo de Productos</h1>
         <br><br>
     </div>
-    
+
     <div>
         <p>ID: {{ listaProductos[0]._id["$oid"] }}</p>
         <p>Clave: {{ listaProductos[0].clave }}</p>
@@ -34,7 +34,7 @@
         <p>Origen: {{ listaProductos[0].origen }}</p>
         <p>Prov ID: {{ listaProductos[0].provId }}</p>
       </div>
-      
+
 
 
 <table class="table table-bordered">
@@ -43,6 +43,7 @@
         <th>ID</th>
         <th>Clave</th>
         <th>Nombre</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -50,12 +51,22 @@
         <td>{{ producto._id["$oid"] }}</td>
         <td>{{ producto.clave }}</td>
         <td>{{ producto.nombre }}</td>
+        <td> <!-- Columna para las acciones -->
+          <div style="display: inline-block;">
+            <span>
+              <a [routerLink]="['productoseliminar']">
+                <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
+              </a>
+            </span>
+            
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>
-  
-  
-    
+
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-b0E2q0tX2lAuzLkXrm5S+EM3qEn1QUBcP8/8AJ5P4+Ua/HKa5F0K8ebasg8FjkF" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy3v6IVj5me6JLoApg/5D1BA5+6S4Zl5n" crossorigin="anonymous"></script>

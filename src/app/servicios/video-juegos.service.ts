@@ -12,11 +12,12 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class VideoJuegosService {
+  eliminar: any;
 
   constructor(private http:HttpClient) { }
   obtenerNew_api()
   {
-    return this.http.get<VideoJuego[]>('https://run.mocky.io/v3/56bd50df-e5a5-47f5-8204-31a7a094bb1a') 
+    return this.http.get<VideoJuego[]>('https://run.mocky.io/v3/56bd50df-e5a5-47f5-8204-31a7a094bb1a')
   }
 }
 
@@ -46,3 +47,15 @@ export class ProductService {
       );
   }
 }
+
+//actualizarProducto(id: string, producto: any): Observable<any> {
+//  const url = `${this.apiUrl}/productos/actualizar/${id}`;
+//  return this.http.put(url, producto);
+//}
+//}
+
+//eliminar_prod(id:string | null){
+//  const apiUrl='http://127.0.0.1:4000'
+//  const url = `${apiUrl}/productos/eliminar/${id}`;
+//  return this.http.delete<any>(url)
+//  }

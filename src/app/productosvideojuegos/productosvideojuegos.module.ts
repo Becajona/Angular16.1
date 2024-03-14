@@ -4,6 +4,10 @@ import { BuscarProductosComponent } from './buscar-productos/buscar-productos.co
 import { NuevoProductoComponent } from './nuevo-producto/nuevo-producto.component';
 import { CatalogoProductosComponent } from './catalogo-productos/catalogo-productos.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { EliminarComponent } from './eliminar/eliminar.component';
+import { ActualizarProductoComponent } from './actualizar-producto/actualizar-producto.component';
+
 
 
 
@@ -12,11 +16,14 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     BuscarProductosComponent,
     NuevoProductoComponent,
-    CatalogoProductosComponent
+    CatalogoProductosComponent,
+    EliminarComponent,
+    ActualizarProductoComponent
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule // Asegúrate de importar RouterModule aquí
   ]
 })
 export class ProductosvideojuegosModule { }

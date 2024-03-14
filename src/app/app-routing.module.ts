@@ -1,5 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { ProveedoresModule } from './proveedores/proveedores.module';
 import { ProductosvideojuegosModule } from './productosvideojuegos/productosvideojuegos.module';
 import { LoginComponent } from './navegacion/login/login.component';
@@ -13,7 +14,7 @@ import { CatalogoProveedorComponent } from './proveedores/catalogo-proveedor/cat
 import { BuscarProductosComponent } from './productosvideojuegos/buscar-productos/buscar-productos.component';
 import { CatalogoProductosComponent } from './productosvideojuegos/catalogo-productos/catalogo-productos.component';
 import { NuevoProductoComponent } from './productosvideojuegos/nuevo-producto/nuevo-producto.component';
-
+import { EliminarComponent } from './productosvideojuegos/eliminar/eliminar.component';
 
 
 
@@ -61,6 +62,11 @@ const routes: Routes = [
                     path:'catalogoMarcas',
                     component: CatalogoMarcasComponent
                     },
+                    {
+                      path:'productoseliminar',///:id
+                      component:EliminarComponent
+                    }
+
 ];
 
 @NgModule({
