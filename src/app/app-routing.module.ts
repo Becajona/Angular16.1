@@ -11,19 +11,21 @@ import { CatalogoMarcasComponent } from './marcas/catalogo-marcas/catalogo-marca
 import { VideoJuegosService } from './servicios/video-juegos.service';
 import { CatalogoProveedorComponent } from './proveedores/catalogo-proveedor/catalogo-proveedor.component';
 
-import { BuscarProductosComponent } from './productosvideojuegos/buscar-productos/buscar-productos.component';
+//eliminar
+import { EliminarMarcaComponent } from './marcas/eliminar-marca/eliminar-marca.component';
+import { EliminarProovedorComponent } from './proveedores/eliminar-proovedor/eliminar-proovedor.component';
+
+//Productos videoJuegos
 import { CatalogoProductosComponent } from './productosvideojuegos/catalogo-productos/catalogo-productos.component';
+import { BuscarProductosComponent } from './productosvideojuegos/buscar-productos/buscar-productos.component';
 import { NuevoProductoComponent } from './productosvideojuegos/nuevo-producto/nuevo-producto.component';
 import { EliminarComponent } from './productosvideojuegos/eliminar/eliminar.component';
-
-
-
-
+import { ActualizarProductoComponent } from './productosvideojuegos/actualizar-producto/actualizar-producto.component';
 
 
 const routes: Routes = [
   {
-  path:'productosCatalogo',
+  path:'productosCatalogos',
   component: CatalogoProductosComponent
   },
   {
@@ -62,10 +64,22 @@ const routes: Routes = [
                     path:'catalogoMarcas',
                     component: CatalogoMarcasComponent
                     },
-                    {
-                      path:'productoseliminar',///:id
-                      component:EliminarComponent
-                    }
+                      {
+                        path:'productoseliminar',///:id
+                        component:EliminarComponent
+                      }, 
+                        {
+                          path:'actualizar',
+                          component:ActualizarProductoComponent
+                        },
+                        {
+                          path:'eliminarproovedor/:id',
+                          component: EliminarProovedorComponent
+                          },
+                          {
+                            path:'eliminarmarca/:id',
+                            component: EliminarMarcaComponent
+                            },
 
 ];
 

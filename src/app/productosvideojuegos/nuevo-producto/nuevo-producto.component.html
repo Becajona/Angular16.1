@@ -1,108 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-        
-        .formulario {
-            border: 1px solid #ccc;
-            padding: 20px;
-            width: 500px;
-        }
-        
-        .campo {
-            margin-bottom: 10px;
-        }
-        
-        .campo label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        
-        .campo input,
-        .campo select,
-        .campo textarea {
-            width: 100%;
-            padding: 5px;
-            border: 1px solid #ccc;
-        }
-        
-        .campo select {
-            height: 30px;
-        }
-        
-        .campo textarea {
-            height: 100px;
-        }
-        
-        .boton {
-            margin-top: 10px;
-            padding: 5px 10px;
-            border: 1px solid #ccc;
-            background-color: #000;
-            color: #fff;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuevo Producto</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
+  <div class="container">
     <h1>Nuevo Producto</h1>
-
-    <select #ide_Marca class="form-control" (change)="get_id_marca(id_Marca.value)">
-        <option *ngFor="let marca of listaMarcas" [value]="marca.marcaId"> <!-- Correctly reference marca.marcaId -->
-          {{ marca.marcaId }}
-        </option>
-      </select>
-      
-
-    <input type="text" class="form-control" id="f1" [(ngModel)]="miProd.nombProd" name="nombProd">
-
-    <form class="formulario" ><!--.subscribe((data: Product[]) => {-->
-        <div class="campo">
-            <label for="_id">ID</label>
-            <input type="number" id="_id" placeholder="ID">
-        </div>
-        <div class="campo">
-            <label for="clave">Clave</label>
-            <input type="text" id="clave" name="clave">
-        </div>
-        <div class="campo">
-            <label for="nombre">Nombre del producto:</label>
-            <input type="text" id="nombre" name="nombre" [(ngModel)]="miProd.nombre" required>
-        </div>
-        <div class="campo">
-            <label for="descripción">Descripción:</label>
-            <textarea id="descripción" name="descripción" [(ngModel)]="miProd.descripcion" required></textarea>
-        </div>
-        <div class="campo">
-            <label for="categoria">Categoría:</label>
-            <select id="categoria" name="categoria" [(ngModel)]="miProd.categoria" required>
-                <option value="">Seleccionar...</option>
-                <option value="Niños">Niños</option>
-                <option value="Adultos">Adultos</option>
-                <option value="Adultos Mayores">Adultos Mayores</option>
-            </select>
-        </div>
-
-        <button type="submit" class="me-2 btn btn-outline-dark">Crear Producto</button>
-    </form>
-
-    <footer class="footer mt-auto py-3">
-        <div class="container text-center">
-            <p>&copy; 2024 Jonathan Vega | Diseñado con Angular</p>
-            <div class="social-icons">
-                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+    <form action="#" enctype="multipart/form-data">
+      <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="_id">ID</label>
+                <input type="number" class="form-control" id="_id"  name="nombre" placeholder="ID">
             </div>
+            <div class="form-group">
+                <label for="clave">Clave</label>
+                <input type="text" class="form-control" id="clave" placeholder="Ingrese la clave del producto">
+            </div>
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre del producto">
+          </div>
+          <div class="form-group">
+            <label for="categoria">Categoría</label>
+            <select class="form-control" id="categoria" name="categoria">
+              <option value="">Seleccione una categoría</option>
+              <option value="1">Categoría 1</option>
+              <option value="2">Categoría 2</option>
+              <option value="3">Categoría 3</option>
+            </select>
+          </div>
         </div>
-    </footer>
+
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="costo">Costo</label>
+            <input type="number" class="form-control" id="costo" name="costo">
+          </div>
+          
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="marca">Marca</label>
+            <input type="text" class="form-control" id="marca" name="marca">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="proveedor">Proveedor</label>
+            <input type="text" class="form-control" id="proveedor" name="proveedor">
+          </div>
+          
+          <div class="form-group">
+            <label for="fecha_adquisicion">Fecha de adquisición</label>
+            <input type="date" class="form-control" id="fecha_adquisicion" name="fecha_adquisicion">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="foto">Foto</label>
+            <input type="file" class="form-control" id="foto" name="foto">
+          </div>
+        </div>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+  </div>
+
+
 </body>
 </html>

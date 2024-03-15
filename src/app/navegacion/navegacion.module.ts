@@ -5,17 +5,18 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
 import { NuevoProovedorComponent } from '../proveedores/nuevo-proovedor/nuevo-proovedor.component';
+import { CatalogoProductosComponent } from '../productosvideojuegos/catalogo-productos/catalogo-productos.component';
 
 
 @NgModule({
   declarations: [
     MenuComponent,
     LoginComponent,
-    CrearCuentaComponent,
+    CrearCuentaComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   exports:[
     MenuComponent,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Proveedores } from 'src/app/modelos/video-juegos/proveedores.interface';
 import { ProveedoresService } from 'src/app/servicios/proveedores.service';
 
+
 @Component({
   selector: 'app-catalogo-proveedor',
   templateUrl: './catalogo-proveedor.component.html',

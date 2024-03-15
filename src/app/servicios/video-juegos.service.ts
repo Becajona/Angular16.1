@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { CatalogoProductosComponent } from '../productos.videojuegos/catalogo-productos/catalogo-productos.component';
 import { VideoJuego } from '../modelos/video-juegos/apis-jon.interface';
-
 import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
@@ -21,12 +19,14 @@ export class VideoJuegosService {
   }
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+
 export class ProductService {
 
   constructor(private http: HttpClient) { }
+
+  obtenerNew_api(): Observable<VideoJuego[]> {
+    return this.http.get<VideoJuego[]>('http://192.168.1.67:4000/productos/get_all');
+  }
 
   nuevoProducto(miProd: VideoJuego): Observable<any> {
     const headers = new HttpHeaders({
@@ -47,6 +47,8 @@ export class ProductService {
       );
   }
 }
+
+
 
 //actualizarProducto(id: string, producto: any): Observable<any> {
 //  const url = `${this.apiUrl}/productos/actualizar/${id}`;
