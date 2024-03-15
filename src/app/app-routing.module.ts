@@ -73,7 +73,7 @@ const routes: Routes = [
                           component:ActualizarProductoComponent
                         },
                         {
-                          path:'eliminarproovedor/:id',
+                          path:'eliminarproovedor',
                           component: EliminarProovedorComponent
                           },
                           {
