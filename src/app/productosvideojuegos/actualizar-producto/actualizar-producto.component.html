@@ -1,81 +1,27 @@
-<form (submit)="actualizarProducto()">
+<form [formGroup]="productosForms" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="_id">ID:</label>
+    <input type="text" class="form-control" formControlName="_id">
+  </div>
   <div class="form-group">
     <label for="clave">Clave:</label>
-    <input type="text" class="form-control" id="clave" [ngModel]="producto.clave" name="clave">
+    <input type="text" class="form-control" formControlName="clave">
   </div>
   <div class="form-group">
     <label for="nombre">Nombre:</label>
-    <input type="text" class="form-control" id="nombre" [ngModel]="producto.nombre" name="nombre">
+    <input type="text" class="form-control" formControlName="nombre">
   </div>
   <div class="form-group">
     <label for="categoria">Categoría:</label>
-    <input type="text" class="form-control" id="categoria" [ngModel]="producto.categoria.categoria" name="categoria">
+    <input type="text" class="form-control" formControlName="categoria">
   </div>
   <div class="form-group">
     <label for="tipo">Tipo:</label>
-    <input type="text" class="form-control" id="tipo" [ngModel]="producto.categoria.tipo" name="tipo">
+    <input type="text" class="form-control" formControlName="tipo">
   </div>
-  <div class="form-group">
-    <label for="marcasId">Marcas ID:</label>
-    <input type="text" class="form-control" id="marcasId" [ngModel]="producto.marcasId" name="marcasId">
-  </div>
-  <div class="form-group">
-    <label for="version">Versión:</label>
-    <input type="text" class="form-control" id="version" [ngModel]="producto.version" name="version">
-  </div>
-  <div class="form-group">
-    <label for="idiomas">Idiomas:</label>
-    <input type="text" class="form-control" id="idiomas" [ngModel]="producto.idiomas" name="idiomas">
-  </div>
-  <div class="form-group">
-    <label for="jugadores">Jugadores:</label>
-    <input type="number" class="form-control" id="jugadores" [ngModel]="producto.jugadores" name="jugadores">
-  </div>
-  <div class="form-group">
-    <label for="descripcion">Descripción:</label>
-    <textarea class="form-control" id="descripcion" [ngModel]="producto.descripcion" name="descripcion"></textarea>
-  </div>
-  <div class="form-group">
-    <label for="costo">Costo:</label>
-    <input type="number" class="form-control" id="costo" [ngModel]="producto.costo" name="costo">
-  </div>
-  <div class="form-group">
-    <label for="precio">Precio:</label>
-    <input type="number" class="form-control" id="precio" [ngModel]="producto.precio" name="precio">
-  </div>
-  <div class="form-group">
-    <label for="foto">Foto:</label>
-    <input type="text" class="form-control" id="foto" [ngModel]="producto.foto" name="foto">
-  </div>
-  <div class="form-group">
-    <label for="fechaAdquisicion">Fecha de Adquisición:</label>
-    <input type="text" class="form-control" id="fechaAdquisicion" [ngModel]="producto.fechaAdquisicion" name="fechaAdquisicion">
-  </div>
-  <div class="form-group">
-    <label for="fechaRegistro">Fecha de Registro:</label>
-    <input type="text" class="form-control" id="fechaRegistro" [ngModel]="producto.fecharegistro" name="fechaRegistro">
-  </div>
-  <div class="form-group">
-    <label for="cantidadExistente">Cantidad Existente:</label>
-    <input type="number" class="form-control" id="cantidadExistente" [ngModel]="producto.cantidadExistente" name="cantidadExistente">
-  </div>
-  <div class="form-group">
-    <label for="estado">Estado:</label>
-    <input type="text" class="form-control" id="estado" [ngModel]="producto.estado" name="estado">
-  </div>
-  <div class="form-group">
-    <label for="origen">Origen:</label>
-    <input type="text" class="form-control" id="origen" [ngModel]="producto.origen" name="origen">
-  </div>
-  <div class="form-group">
-    <label for="provId">Prov ID:</label>
-    <input type="text" class="form-control" id="provId" [ngModel]="producto.provId" name="provId">
-  </div>
+  <!-- Agrega los demás campos del formulario aquí -->
+
   <br>
   <br>
   <button type="submit" class="btn btn-primary">Actualizar Producto</button>
 </form>
-<br>
-<br>
-
-<button routerLink="/productosCatalogos" class="btn btn-primary">Regresar</button>

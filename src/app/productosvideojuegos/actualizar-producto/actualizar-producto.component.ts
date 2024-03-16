@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { VideoJuegosService } from 'src/app/servicios/video-juegos.service';
+import { VideoJuego } from '../../modelos/video-juegos/apis-jon.interface';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-actualizar-producto',
@@ -9,70 +11,44 @@ import { VideoJuegosService } from 'src/app/servicios/video-juegos.service';
 })
 export class ActualizarProductoComponent implements OnInit {
   prodId: string | null = null;
-  producto: any = {}; // Tipo del producto, ajusta según la estructura de tu producto
+  producto: VideoJuego = { _id: '', clave: '', nombre: '', categoria: { categoria: '', tipo: '' }, marcasId: [], version: '', idiomas: [], jugadores: 0, descripcion: '', costo: 0, precio: 0, foto: '', fechaAdquisicion: '', fecharegistro: '', cantidadExistente: 0, estado: '', origen: '', provId: '' };
+  productosForms: FormGroup;
 
-  constructor(private router: ActivatedRoute, private servicio: VideoJuegosService) { }
+  constructor(private router: ActivatedRoute, private videoJuegosService: VideoJuegosService) {
+    this.productosForms = new FormGroup({
+      _id: new FormControl('', Validators.required),
+      clave: new FormControl('', Validators.required),
+      nombre: new FormControl('', Validators.required),
+      categoria: new FormControl('', Validators.required),
+      tipo: new FormControl('', Validators.required),
+      // Agrega los demás campos del formulario aquí
+    });
+  }
 
   ngOnInit(): void {
     this.prodId = this.router.snapshot.paramMap.get('id');
     console.log('ID del producto:', this.prodId);
-    // Aquí puedes realizar cualquier otra lógica necesaria con el ID del producto
     this.obtenerProductoPorId();
+  }
+
+  onSubmit() {
+    if (this.productosForms.valid) {
+      const producto = this.productosForms.value;
+      this.videoJuegosService.agregarNuevoProducto(producto).subscribe(response => {
+        console.log('Producto actualizado:', response);
+        // Realiza cualquier otra acción necesaria después de actualizar el producto
+      });
+    } else {
+      console.error("El formulario es inválido.");
+    }
   }
 
   obtenerProductoPorId(): void {
     if (this.prodId) {
-      this.servicio.obtenerProductoPorId(this.prodId).subscribe((producto: any) => {
+      this.videoJuegosService.obtenerProductoPorId(this.prodId).subscribe((producto: VideoJuego) => {
         this.producto = producto;
-      });
-    }
-  }
-
-  actualizarProducto(): void {
-    if (this.prodId && this.producto) {
-      this.servicio.actualizarProducto(this.prodId, this.producto).subscribe(res => {
-        // Manejar la respuesta si es necesario
-        console.log('Producto actualizado:', res);
+        this.productosForms.patchValue(producto); // Actualiza los valores del formulario con los datos del producto
       });
     }
   }
 }
-
-
-
-
-
-
-function actualizarProducto() {
-  throw new Error('Function not implemented.');
-}
-//implements OnInit {
-//  prodId: string | null = null;
-//  producto: any; // Tipo del producto, ajusta según la estructura de tu producto
-
-//  constructor(private router: ActivatedRoute, private servicio: TuServicio) { }
-
-//  ngOnInit(): void {
-//    this.prodId = this.router.snapshot.paramMap.get('id');
-//    this.obtenerProductoPorId();
- // }
-
- // obtenerProductoPorId(): void {
-  //  if (this.prodId) {
- //     this.servicio.get_by_id(this.prodId).subscribe((producto: any) => {
-//        this.producto = producto;
-//        // Aquí puedes realizar cualquier lógica adicional con el producto obtenido
-//      });
-//    }
-//  }
-//}
-
-
-//actualizarProducto(): void {
- // if (this.prodId && this.producto) {
-  //  this.servicio.actualizarProducto(this.prodId, this.producto).subscribe(res => {
-      // Manejar la respuesta si es necesario
- //   });
- // }
-//}
-//}

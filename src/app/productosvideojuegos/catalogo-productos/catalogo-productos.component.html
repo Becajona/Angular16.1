@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy3v6IVj5me6JLoApg/5D1BA5+6S4Zl5n" crossorigin="anonymous">
-    <title>Catalogo de Productos</title>
-</head>
-<body>
-
+<title>Catalogo de Productos</title>
   <div *ngIf="!listaProductos || listaProductos.length === 0">
     <p>No hay productos disponibles.</p>
   </div>
   
+  <button routerLink="/productoNuevo">Nuevo Producto</button>
 
   <div class="container mt-5">
     <h1>Catálogo de Productos</h1>
@@ -46,8 +37,13 @@
   </div>
 </div>
 <hr> <!-- Separador entre productos -->
+
+
+
 <div class="table-responsive">
-  <table class="table table-striped">
+  
+
+  <table class="table table-striped" >
     <thead class="thead-dark">
       <tr>
         <th>ID</th>
@@ -94,9 +90,10 @@
         <td>{{ producto.origen }}</td>
         <td>{{ producto.provId }}</td>
         <td>
-          <a routerLink="/actualizarproducto" class="btn btn-primary btn-sm">
-            <i class="bi bi-pencil-square"></i> <!-- Icono de modificar -->
-          </a>
+          <button (click)="actualizarProducto(producto._id)" routerLink="/actualizarproducto" class="btn btn-primary btn-sm">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+            
           <button routerLink="/productoseliminar" class="btn btn-danger btn-sm">
             <i class="bi bi-trash"></i> <!-- Icono de borrar -->
           </button>
@@ -115,10 +112,3 @@
   <button class="btn btn-secondary ml-2" (click)="nextPage()">Siguiente</button>
 </div>
 
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-b0E2q0tX2lAuzLkXrm5S+EM3qEn1QUBcP8/8AJ5P4+Ua/HKa5F0K8ebasg8FjkF" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy3v6IVj5me6JLoApg/5D1BA5+6S4Zl5n" crossorigin="anonymous"></script>
-
-</body>
-</html>

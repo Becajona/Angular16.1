@@ -2,54 +2,53 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { VideoJuego } from '../modelos/video-juegos/apis-jon.interface';
 import { catchError, tap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class VideoJuegosService {
 
-  eliminar: any;
+  constructor(private http: HttpClient) { }
 
-  constructor(private http:HttpClient) { }
-  private apiUrl = 'http://192.168.1.67:4000/api/v1/productos/get_all';
-  
-  obtenerNew_api(): Observable<VideoJuego[]> {
-    return this.http.get<VideoJuego[]>('http://192.168.1.67:4000/api/v1/productos/get_all')
-      .pipe(
-        tap(data => console.log('Datos obtenidos del servidor:', data)),
-        catchError(err => {
-          console.error('Error al obtener los datos del servidor:', err);
-          return of([]); // Retorna un array vacío en caso de error
-        })
-      );
-  }
-  actualizarProducto(prodId: string, producto: any): Observable<any> {
-    const url = `${this.apiUrl}/${prodId}`; // Construir la URL para actualizar el producto
-    return this.http.put(url, producto); // Realizar la solicitud HTTP PUT para actualizar el producto
-  }
+  private apiUrl = 'http://192.168.1.67:4000/api/v1/productos';
 
+  obtenerTodosLosProductos(): Observable<VideoJuego[]> {
+    const url = `${this.apiUrl}/get_all`;
+    return this.http.get<VideoJuego[]>(url).pipe(
+      tap(data => console.log('Datos obtenidos del servidor:', data)),
+      catchError(err => {
+        console.error('Error al obtener los datos del servidor:', err);
+        return throwError(err);
+      })
+    );
+  }
 
   obtenerProductoPorId(id: string): Observable<any> {
-    const url = `${this.apiUrl}/productos/${id}`; // Suponiendo que la URL para obtener un producto por su ID sea /productos/:id
+    const url = `${this.apiUrl}/porID/${id}`;
     return this.http.get<any>(url);
   }
-  
-  nuevoProducto(miProd: VideoJuego): Observable<any> {
+
+  actualizarProducto(prodId: string, producto: any): Observable<any> {
+    const url = `${this.apiUrl}/${prodId}`;
+    return this.http.put<any>(url, producto);
+  }
+  agregarNuevoProducto(nuevoProducto: VideoJuego): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-
-    return this.http.post<any>('', miProd, { headers })
-      .pipe(
-        tap((res: any) => {
-          if (res.message === "producto insertado") {
-            console.log("servicio", res.message);
-          }
-        }),
-        catchError(err => {
-          console.error(err.message);
-          return of(err);
-        })
-      );
+    
+    const url = `${this.apiUrl}/nuevoProd`;
+    return this.http.post<any>(url, nuevoProducto, { headers }).pipe(
+      tap((res: any) => {
+        if (res.message === 'producto insertado') {
+          console.log('Producto insertado correctamente');
+        }
+      }),
+      catchError(err => {
+        console.error('Error al agregar nuevo producto:', err);
+        return throwError(err);
+      })
+    );
   }
 }

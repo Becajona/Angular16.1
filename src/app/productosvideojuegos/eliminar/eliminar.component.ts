@@ -21,21 +21,9 @@ export class EliminarComponent implements OnInit {
   ngOnInit(): void {
     this.prodId = this.router.snapshot.paramMap.get('id');
     console.log(this.prodId);
-    this.eliminar();
+
   }
 
   messageErr: any;
-
-  eliminar() {
-    try {
-      this.servicioProd.eliminar(this.prodId).subscribe((data: any) => {
-        console.log(data);
-        alert("Producto eliminado");
-        // Redirecciona para cargar el componente catálogo
-        this.ruta.navigate(['/productoscatalogo']);
-      });
-    } catch (error: any) {
-      this.messageErr = error.error.message;
-    }
-  }
+ 
 }
