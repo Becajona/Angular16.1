@@ -1,7 +1,5 @@
 export interface VideoJuego {
-    _id: {
-      "$oid": string;
-    };
+    _id: string;
     clave: string;
     nombre: string;
     categoria: {
@@ -16,27 +14,12 @@ export interface VideoJuego {
     costo: number;
     precio: number;
     foto: string;
-    fechaAdquisicion: {
-      "$date": string;
-    };
-    fecharegistro: {
-      "$date": string;
-    };
+    fechaAdquisicion:string;
+    fecharegistro: string;
     cantidadExistente: number;
     estado: string;
     origen: string;
     provId: string;
   }
   
-  //export interface VideoJuego {
 
- //   _id: string;
-//    fotoProducto: string;
-//    nombProd: string;
-//    url:string;
-//    cantExistente: number;
-//    caracteristicas: string[];
- //   width: number; // Puedes agregar este campo si no está presente en la interfaz original
-//    height: number; // Puedes agregar este campo si no está presente en la interfaz original
- // }
-  

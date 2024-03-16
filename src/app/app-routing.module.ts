@@ -14,6 +14,7 @@ import { CatalogoProveedorComponent } from './proveedores/catalogo-proveedor/cat
 //eliminar
 import { EliminarMarcaComponent } from './marcas/eliminar-marca/eliminar-marca.component';
 import { EliminarProovedorComponent } from './proveedores/eliminar-proovedor/eliminar-proovedor.component';
+import { ActualizarProovedorComponent } from './proveedores/actualizar-proovedor/actualizar-proovedor.component';
 
 //Productos videoJuegos
 import { CatalogoProductosComponent } from './productosvideojuegos/catalogo-productos/catalogo-productos.component';
@@ -69,7 +70,7 @@ const routes: Routes = [
                         component:EliminarComponent
                       }, 
                         {
-                          path:'actualizar',
+                          path:'actualizarproducto',
                           component:ActualizarProductoComponent
                         },
                         {
@@ -80,6 +81,10 @@ const routes: Routes = [
                             path:'eliminarmarca/:id',
                             component: EliminarMarcaComponent
                             },
+                            {
+                              path:'actualizarproovedor',
+                              component: ActualizarProovedorComponent
+                              },
 
 ];
 

@@ -11,9 +11,10 @@ export class ProveedoresService {
   constructor(private http: HttpClient) { }
 
   obtenerNew_api() {
-    return this.http.get<Proveedores[]>('https://run.mocky.io/v3/2be0ccf2-b8ce-4ec9-8d5c-63aed8ab6344');
+    return this.http.get<Proveedores[]>('http://192.168.1.67:4000/api/v1/proveedores/get_all');
   }
 
+  
   obtenerPorId_api(id: number): Observable<Proveedores> {
     const url = `URL_DEL_ENDPOINT/${id}`; // Reemplaza URL_DEL_ENDPOINT por la URL real del endpoint para obtener un proveedor por su ID
     return this.http.get<Proveedores>(url);

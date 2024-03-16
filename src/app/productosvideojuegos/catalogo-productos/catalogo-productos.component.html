@@ -3,70 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy3v6IVj5me6JLoApg/5D1BA5+6S4Zl5n" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy3v6IVj5me6JLoApg/5D1BA5+6S4Zl5n" crossorigin="anonymous">
     <title>Catalogo de Productos</title>
 </head>
 <body>
 
-  <h1>Hello</h1>
+  <div *ngIf="!listaProductos || listaProductos.length === 0">
+    <p>No hay productos disponibles.</p>
+  </div>
+  
 
-    <div class="container mt-5">
-        <h1>Catálogo de Productos</h1>
-        <br><br>
-    </div>
-
-    <div>
-        <p>ID: {{ listaProductos[0]._id["$oid"] }}</p>
-        <p>Clave: {{ listaProductos[0].clave }}</p>
-        <p>Nombre: {{ listaProductos[0].nombre }}</p>
-        <p>Categoría: {{ listaProductos[0].categoria.categoria }}</p>
-        <p>Tipo: {{ listaProductos[0].categoria.tipo }}</p>
-        <p>Marcas ID: {{ listaProductos[0].marcasId }}</p>
-        <p>Versión: {{ listaProductos[0].version }}</p>
-        <p>Idiomas: {{ listaProductos[0].idiomas }}</p>
-        <p>Jugadores: {{ listaProductos[0].jugadores }}</p>
-        <p>Descripción: {{ listaProductos[0].descripcion }}</p>
-        <p>Costo: {{ listaProductos[0].costo }}</p>
-        <p>Precio: {{ listaProductos[0].precio }}</p>
-        <p>Foto: {{ listaProductos[0].foto }}</p>
-        <p>Fecha de Adquisición: {{ listaProductos[0].fechaAdquisicion["$date"] }}</p>
-        <p>Fecha de Registro: {{ listaProductos[0].fecharegistro["$date"] }}</p>
-        <p>Cantidad Existente: {{ listaProductos[0].cantidadExistente }}</p>
-        <p>Estado: {{ listaProductos[0].estado }}</p>
-        <p>Origen: {{ listaProductos[0].origen }}</p>
-        <p>Prov ID: {{ listaProductos[0].provId }}</p>
-      </div>
-
-
-
-<table class="table table-bordered">
+  <div class="container mt-5">
+    <h1>Catálogo de Productos</h1>
+    <br><br>
+</div>
+<div class="row">
+  <div class="col">
+    <p>ID: {{ listaProductos[1]._id }}</p>
+    <p>Clave: {{ listaProductos[0].clave }}</p>
+    <p>Nombre: {{ listaProductos[0].nombre }}</p>
+    <p>Categoría: {{ listaProductos[0].categoria.categoria }}</p>
+    <p>Tipo: {{ listaProductos[0].categoria.tipo }}</p>
+    <p>Marcas ID: {{ listaProductos[0].marcasId }}</p>
+  </div>
+  <div class="col">
+    <p>Versión: {{ listaProductos[0].version }}</p>
+    <p>Idiomas: {{ listaProductos[0].idiomas }}</p>
+    <p>Jugadores: {{ listaProductos[0].jugadores }}</p>
+    <p>Descripción: {{ listaProductos[0].descripcion }}</p>
+    <p>Costo: {{ listaProductos[0].costo }}</p>
+    <p>Precio: {{ listaProductos[0].precio }}</p>
+  </div>
+  <div class="col">
+    <p>Foto: {{ listaProductos[0].foto }}</p>
+    <p>Fecha de Adquisición: {{ listaProductos[0].fechaAdquisicion }}</p>
+    <p>Fecha de Registro: {{ listaProductos[0].fecharegistro }}</p>
+    <p>Cantidad Existente: {{ listaProductos[0].cantidadExistente }}</p>
+    <p>Estado: {{ listaProductos[0].estado }}</p>
+    <p>Origen: {{ listaProductos[0].origen }}</p>
+    <p>Prov ID: {{ listaProductos[0].provId }}</p>
+  </div>
+</div>
+<hr> <!-- Separador entre productos -->
+<div class="table-responsive">
+  <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
         <th>ID</th>
         <th>Clave</th>
         <th>Nombre</th>
+        <th>Categoría</th>
+        <th>Tipo</th>
+        <th>Marcas ID</th>
+        <th>Versión</th>
+        <th>Idiomas</th>
+        <th>Jugadores</th>
+        <th>Descripción</th>
+        <th>Costo</th>
+        <th>Precio</th>
+        <th>Foto</th>
+        <th>Fecha de Adquisición</th>
+        <th>Fecha de Registro</th>
+        <th>Cantidad Existente</th>
+        <th>Estado</th>
+        <th>Origen</th>
+        <th>Prov ID</th>
         <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let producto of listaProductos">
-        <td>{{ producto._id["$oid"] }}</td>
+      <tr *ngFor="let producto of listaProductos | slice: (page-1)*itemsPerPage : page*itemsPerPage">
+        <td>{{ producto._id }}</td>
         <td>{{ producto.clave }}</td>
         <td>{{ producto.nombre }}</td>
-        <td> <!-- Columna para las acciones -->
-          <div style="display: inline-block;">
-            <span>
-              <a [routerLink]="['productoseliminar']">
-                <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
-              </a>
-            </span>
-            
-          </div>
+        <td>{{ producto.categoria.categoria }}</td>
+        <td>{{ producto.categoria.tipo }}</td>
+        <td>{{ producto.marcasId }}</td>
+        <td>{{ producto.version }}</td>
+        <td>{{ producto.idiomas }}</td>
+        <td>{{ producto.jugadores }}</td>
+        <td>{{ producto.descripcion }}</td>
+        <td>{{ producto.costo }}</td>
+        <td>{{ producto.precio }}</td>
+        <td>{{ producto.foto }}</td>
+        <td>{{ producto.fechaAdquisicion }}</td>
+        <td>{{ producto.fecharegistro }}</td> 
+        <td>{{ producto.cantidadExistente }}</td>
+        <td>{{ producto.estado }}</td>
+        <td>{{ producto.origen }}</td>
+        <td>{{ producto.provId }}</td>
+        <td>
+          <a routerLink="/actualizarproducto" class="btn btn-primary btn-sm">
+            <i class="bi bi-pencil-square"></i> <!-- Icono de modificar -->
+          </a>
+          <button routerLink="/productoseliminar" class="btn btn-danger btn-sm">
+            <i class="bi bi-trash"></i> <!-- Icono de borrar -->
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
-
+</div>
+<br><br>
+<!-- Paginación -->
+<div class="pagination justify-content-center">
+  <button class="btn btn-secondary mr-2" (click)="previousPage()">Anterior</button>
+  <br>
+  <span class="align-self-center">Página {{ page }} de {{ totalPages }}</span>
+  <br>
+  <button class="btn btn-secondary ml-2" (click)="nextPage()">Siguiente</button>
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

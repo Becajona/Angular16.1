@@ -3,10 +3,10 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
-//servicios
-import { MarcasService } from 'src/app/servicios/marcas.service';
-import { ProductService } from '../../servicios/video-juegos.service';
-import { VideoJuego } from '../../modelos/video-juegos/apis-jon.interface';//Productos
+// Importa el servicio correcto
+import { VideoJuegosService } from 'src/app/servicios/video-juegos.service';
+import { VideoJuego } from '../../modelos/video-juegos/apis-jon.interface';
+
 @Component({
   selector: 'app-catalogo-productos',
   templateUrl: './catalogo-productos.component.html',
@@ -14,6 +14,8 @@ import { VideoJuego } from '../../modelos/video-juegos/apis-jon.interface';//Pro
 })
 export class CatalogoProductosComponent implements OnInit {
   listaProductos: VideoJuego[] = [];
+  page: number = 1; // Inicializa la página en 1
+  itemsPerPage: number = 10; // Número de productos por página
   miProd: VideoJuego = {
     clave: '',
     nombre: '',
@@ -29,26 +31,27 @@ export class CatalogoProductosComponent implements OnInit {
     costo: 0,
     precio: 0,
     foto: '',
-    fechaAdquisicion: { $date: '' },
-    fecharegistro: { $date: '' },
+    fechaAdquisicion: '' ,
+    fecharegistro: '' ,
     cantidadExistente: 0,
     estado: '',
     origen: '',
     provId: '',
-    _id: { $oid: '' } // Ensure _id property is an object with a $oid property
+    _id: '' 
   };
   imagen1: any;
 
-  constructor(private productService: ProductService, private router: Router) { }
-
+  constructor(private videojuegoService: VideoJuegosService, private router: Router) { }
+  
   ngOnInit(): void {
-    this.productService.obtenerNew_api()
-      .subscribe((data: VideoJuego[]) => { // Explicitly type data as VideoJuego[]
-        console.log(data);
+    this.videojuegoService.obtenerNew_api()
+      .subscribe((data: VideoJuego[]) => {
+        console.log('Datos recibidos:', data);
         this.listaProductos = data;
       });
   }
-
+  
+  
   convertir_B64(event: any) {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
@@ -59,13 +62,13 @@ export class CatalogoProductosComponent implements OnInit {
   }
 
   nuevoProducto(miProd: VideoJuego): Observable<any> {
-    return this.productService.nuevoProducto(miProd).pipe(
+    return this.videojuegoService.nuevoProducto(miProd).pipe(
       tap((res: any) => {
         if (res.message === "producto insertado") {
           console.log("servicio", res.message);
         }
       }),
-      catchError(err => of(err.error.message)) // Import 'of' function and use it here
+      catchError(err => of(err.error.message))
     );
   }
 
@@ -83,4 +86,21 @@ export class CatalogoProductosComponent implements OnInit {
       }
     });
   }
+  previousPage() {
+    if (this.page > 1) {
+      this.page--;
+    }
+  }
+
+  nextPage() {
+    if (this.page < this.totalPages) {
+      this.page++;
+    }
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.listaProductos.length / this.itemsPerPage);
+  }
 }
+
+

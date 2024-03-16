@@ -5,6 +5,7 @@ import { CatalogoProveedorComponent } from './catalogo-proveedor/catalogo-provee
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { EliminarProovedorComponent } from './eliminar-proovedor/eliminar-proovedor.component';
+import { ActualizarProovedorComponent } from './actualizar-proovedor/actualizar-proovedor.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { EliminarProovedorComponent } from './eliminar-proovedor/eliminar-proove
     NuevoProovedorComponent,
     CatalogoProveedorComponent,
     EliminarProovedorComponent,
+    ActualizarProovedorComponent,
 
   ],
   imports: [
