@@ -1,36 +1,52 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { CatalogoMarcasComponent } from '../marcas/catalogo-marcas/catalogo-marcas.component';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Marca } from '../modelos/video-juegos/marcas.interface';
-import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MarcasService {
-
+  private apiUrl = 'http://192.168.1.67:4000/api/v1/marcas';
   constructor(private http:HttpClient) { }
-  obtenerNew_api()
-  {
-    return this.http.get<Marca[]>('https://run.mocky.io/v3/08def0c7-8b20-4d71-bf16-60caadb0a475') 
+
+  obtenerTodosLasMarcas(): Observable<any[]> {
+    const url = `${this.apiUrl}/get_all`; 
+    return this.http.get<any[]>(url).pipe(
+      tap(data => console.log('Datos obtenidos del servidor:', data)),
+      catchError(err => {
+        console.error('Error al obtener los datos del servidor:', err);
+        return throwError(err);
+      })
+    );
   }
-}
+  
+  //nueva POST
+  guardarMarca(marca: any): Observable<any> {
+    const url = `${this.apiUrl}/nuevamarca`;
+    return this.http.post<any>(url, marca).pipe(
+      tap((res: any) => {
+        console.log('Marca guardada correctamente');
+      }),
+      catchError(err => {
+        console.error('Error al guardar marca:', err);
+        return throwError(err);
+      })
+    );
+  }
 
-
-@Injectable({
-  providedIn: 'root'
-})
-export class MarcasServices {
-
-  constructor(private http: HttpClient) { }
 
   // Método para eliminar una marca por su ID
-  eliminar(id: string): Observable<any> {
-    const url = `URL_DE_TU_API_PARA_ELIMINAR_MARCA/${id}`; // Reemplaza URL_DE_TU_API_PARA_ELIMINAR_MARCA con la URL de tu API
+  eliminarMarca(id: string): Observable<any> {
+    const url = `${this.apiUrl}/eliminar/${id}`; // Reemplaza URL_DE_TU_API_PARA_ELIMINAR_MARCA con la URL de tu API
     return this.http.delete(url).pipe(
-      catchError(error => {
-        throw error; // Manejo de errores
+      tap((res: any) => {
+        console.log('Proveedor eliminado correctamente');
+      }),
+      catchError(err => {
+        console.error('Error al eliminar proveedor:', err);
+        return throwError(err);
       })
     );
   }

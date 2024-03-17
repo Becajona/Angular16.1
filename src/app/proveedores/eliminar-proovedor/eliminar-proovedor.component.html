@@ -1,1 +1,13 @@
-<p>eliminar-proovedor works!</p>
+<div>
+    <h2>¿Estás seguro de que deseas eliminar este proveedor?</h2>
+
+    <!-- Puedes agregar más campos según sea necesario 
+        <p>Nombre: {{ listaproovedor.nombre }}</p>
+    <p>Dirección: {{ proveedor.direccion }}</p>
+    <p>Correo Electrónico: {{ proveedor.correoElectronico }}</p>
+    <p>Teléfono: {{ proveedor.telefono }}</p>
+    -->
+    <button (click)="eliminarProveedor(provId)">Eliminar</button>
+  </div>
+  <button routerLink="/catalogoProveedor">Cancelar</button>
+  

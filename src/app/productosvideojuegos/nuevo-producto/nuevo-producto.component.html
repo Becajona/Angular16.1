@@ -1,42 +1,62 @@
+
 <div class="container">
   <h1>Nuevo Producto</h1>
-  <form [formGroup]="productosForms" (ngSubmit)="onSubmit()">
+  <form [formGroup]="productosForms" (ngSubmit)="agregarProducto()">
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <label for="clave">Clave</label>
-          <input type="text" class="form-control" id="clave" formControlName="clave" placeholder="Ingrese la clave del producto" [ngModel]="miProd.clave">
-          <div class="alert alert-danger mt-2" [hidden]="">
-            el campo es obligatorio
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" formControlName="nombre" 
+            placeholder="Ingrese el nombre del producto">
+            <div class="alert alert-danger mt-2" >
+              El campo es obligatorio
+            </div>
           </div>
+          
         </div>
         <div class="form-group">
-          <label for="nombre">Nombre</label>
-          <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Ingrese el nombre del producto" [ngModel]="miProd.nombre" >
+          <label for="categoria">Categoría</label>
+          <input type="text" class="form-control" id="categoria" formControlName="categoria" placeholder="Ingrese la categoría del producto">
         </div>
-        <!-- Resto de los campos de entrada -->
+        <div class="form-group">
+          <label for="marcasId">Marcas ID</label>
+          <input type="text" class="form-control" id="marcasId" formControlName="marcasId" placeholder="Ingrese el ID de las marcas del producto">
+        </div>
+        <div class="form-group">
+          <label for="version">Versión</label>
+          <input type="text" class="form-control" id="version" formControlName="version" placeholder="Ingrese la versión del producto">
+        </div>
+        <div class="form-group">
+          <label for="idiomas">Idiomas</label>
+          <input type="text" class="form-control" id="idiomas" formControlName="idiomas" placeholder="Ingrese los idiomas del producto">
+        </div>
+        <div class="form-group">
+          <label for="jugadores">estado</label>
+          <input type="text" class="form-control" id="estado" formControlName="estado" placeholder="Estado">
+        </div>
+        
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="jugadores">Jugadores</label>
+          <input type="number" class="form-control" id="jugadores" formControlName="jugadores" placeholder="Ingrese el número de jugadores">
+        </div>
         <div class="form-group">
           <label for="descripcion">Descripción</label>
-          <textarea class="form-control" id="descripcion" formControlName="descripcion" rows="3" placeholder="Ingrese la descripción del producto" [ngModel]="miProd.descripcion" ></textarea>
+          <textarea class="form-control" id="descripcion" formControlName="descripcion" rows="3" placeholder="Ingrese la descripción del producto"></textarea>
         </div>
         <div class="form-group">
           <label for="costo">Costo</label>
-          <input type="number" class="form-control" id="costo" formControlName="costo" placeholder="Ingrese el costo del producto" [ngModel]="miProd.costo">
+          <input type="number" class="form-control" id="costo" formControlName="costo" placeholder="Ingrese el costo del producto">
         </div>
         <div class="form-group">
           <label for="precio">Precio</label>
-          <input type="number" class="form-control" id="precio" formControlName="precio" placeholder="Ingrese el precio del producto" [ngModel]="miProd.precio">
+          <input type="number" class="form-control" id="precio" formControlName="precio" placeholder="Ingrese el precio del producto">
         </div>
         <div class="form-group">
-          <label for="fechaAdquisicion">Fecha de Adquisición</label>
-          <input type="date" class="form-control" id="fechaAdquisicion" formControlName="fechaAdquisicion" [ngModel]="miProd.fechaAdquisicion">
-        </div>
-      </div>
-      <div class="col-md-6">
-        <!-- Campos de entrada restantes -->
-        <div class="form-group">
-          <label>foto</label>
-          <input type="file" class="form-control" accept="image/*" (change)="convertir_B64($event)" [ngModel]="miProd.foto" required>
+          <label for="foto">Foto</label>
+          <input type="text" class="form-control" id="foto" formControlName="foto" accept="image/*"  required><!--(change)="convertir_B64($event)"-->
         </div>
         <div class="form-group">
           <label for="cantidadExistente">Cantidad Existente</label>
@@ -44,11 +64,11 @@
         </div>
         <div class="form-group">
           <label for="origen">Origen</label>
-          <input type="text" class="form-control" id="origen" formControlName="origen" placeholder="Ingrese el origen del producto" [ngModel]="miProd.origen" required>
+          <input type="text" class="form-control" id="origen" formControlName="origen" placeholder="Ingrese el origen del producto" required>
         </div>
         <div class="form-group">
           <label for="provId">Proveedor ID</label>
-          <input type="text" class="form-control" id="provId" formControlName="provId" placeholder="Ingrese el ID del proveedor del producto" [ngModel]="miProd.provId"   required>
+          <input type="text" class="form-control" id="provId" formControlName="provId" placeholder="Ingrese el ID del proveedor del producto" required>
         </div>
       </div>
     </div>
@@ -56,4 +76,7 @@
     <button type="submit" class="me-2 btn btn-outline-dark">Crear Producto</button>
   </form>
 </div>
+<br>
+<button routerLink="/productosCatalogos">Cancelar</button>
+
 

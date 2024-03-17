@@ -11,6 +11,10 @@ import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProductosvideojuegosModule } from './productosvideojuegos/productosvideojuegos.module'; 
 import { VideoJuegosService } from './servicios/video-juegos.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MarcasModule } from './marcas/marcas.module';
+
+
 
 @NgModule({
   declarations: [
@@ -24,7 +28,9 @@ import { VideoJuegosService } from './servicios/video-juegos.service';
     HttpClientModule,
     FormsModule,
     ProductosvideojuegosModule,
+    MarcasModule,
     CommonModule,
+    ReactiveFormsModule,
     NgxPaginationModule,
     RouterModule.forRoot([])
   ],

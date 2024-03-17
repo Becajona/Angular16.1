@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+//servicios
 import { Proveedores } from 'src/app/modelos/video-juegos/proveedores.interface';
 import { ProveedoresService } from 'src/app/servicios/proveedores.service';
 
@@ -13,7 +15,7 @@ export class CatalogoProveedorComponent implements OnInit{
   constructor(public api:ProveedoresService){}
 
   ngOnInit(): void {
-    this.api.obtenerNew_api()
+    this.api.obtenerTodosLosProveedores()
     .subscribe((data)=>{
       console.log(data)
       this.listaProveedor = data;

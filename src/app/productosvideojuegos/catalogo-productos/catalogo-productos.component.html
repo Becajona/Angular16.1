@@ -15,18 +15,21 @@
     <p>Nombre: {{ listaProductos[0].nombre }}</p>
     <p>Categoría: {{ listaProductos[0].categoria}}</p>
     <p>Marcas ID: {{ listaProductos[0].marcasId }}</p>
+    <p>Versión: {{ listaProductos[0].version }}</p>
+
   </div>
   <div class="col">
-    <p>Versión: {{ listaProductos[0].version }}</p>
     <p>Idiomas: {{ listaProductos[0].idiomas }}</p>
     <p>Jugadores: {{ listaProductos[0].jugadores }}</p>
     <p>Descripción: {{ listaProductos[0].descripcion }}</p>
     <p>Costo: {{ listaProductos[0].costo }}</p>
     <p>Precio: {{ listaProductos[0].precio }}</p>
+
   </div>
   <div class="col">
     <p>Foto: {{ listaProductos[0].foto }}</p>
     <p>Cantidad Existente: {{ listaProductos[0].cantidadExistente }}</p>
+
     <p>Estado: {{ listaProductos[0].estado }}</p>
     <p>Origen: {{ listaProductos[0].origen }}</p>
     <p>Prov ID: {{ listaProductos[0].provId }}</p>
@@ -87,7 +90,7 @@
         </td>
         <td>
           <a [routerLink]="['/actualizarproducto', producto._id]">Actualizar</a>
-          <i class="bi bi-pencil-square"></i>
+          <i class="bi bi-pencil-square" aria-hidden="true"></i>
         </td>
       </tr>
     </tbody>

@@ -1,7 +1,5 @@
 export interface Proveedores {
-    _id: {
-        $oid: string;
-    };
+    _id: string;
     provId: string;
     nombre: string;
     direccion: string;

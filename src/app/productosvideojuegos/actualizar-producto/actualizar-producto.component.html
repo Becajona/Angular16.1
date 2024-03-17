@@ -1,23 +1,7 @@
-<form [formGroup]="productosForms" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="_id">ID:</label>
-    <input type="text" class="form-control" formControlName="_id">
-  </div>
-  <div class="form-group">
-    <label for="clave">Clave:</label>
-    <input type="text" class="form-control" formControlName="clave">
-  </div>
+<form [formGroup]="productosForms" (ngSubmit)="obtenerProductoPorId()">
   <div class="form-group">
     <label for="nombre">Nombre:</label>
     <input type="text" class="form-control" formControlName="nombre">
-  </div>
-  <div class="form-group">
-    <label for="categoria">Categoría:</label>
-    <input type="text" class="form-control" formControlName="categoria">
-  </div>
-  <div class="form-group">
-    <label for="tipo">Tipo:</label>
-    <input type="text" class="form-control" formControlName="tipo">
   </div>
   <div class="form-group">
     <label for="marcasId">Marcas ID:</label>
@@ -26,6 +10,10 @@
   <div class="form-group">
     <label for="version">Versión:</label>
     <input type="text" class="form-control" formControlName="version">
+  </div>
+  <div class="form-group">
+    <label for="version">categoria:</label>
+    <input type="text" class="form-control" formControlName="categoria">
   </div>
   <div class="form-group">
     <label for="idiomas">Idiomas:</label>
@@ -50,14 +38,6 @@
   <div class="form-group">
     <label for="foto">Foto:</label>
     <input type="text" class="form-control" formControlName="foto">
-  </div>
-  <div class="form-group">
-    <label for="fechaAdquisicion">Fecha de Adquisición:</label>
-    <input type="text" class="form-control" formControlName="fechaAdquisicion">
-  </div>
-  <div class="form-group">
-    <label for="fecharegistro">Fecha de Registro:</label>
-    <input type="text" class="form-control" formControlName="fecharegistro">
   </div>
   <div class="form-group">
     <label for="cantidadExistente">Cantidad Existente:</label>

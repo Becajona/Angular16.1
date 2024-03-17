@@ -22,42 +22,31 @@ export class VideoJuegosService {
     );
   }
 
-  obtenerProductoPorId(id: string): Observable<any> {
-    const url = `${this.apiUrl}/porID/${id}`;
-    return this.http.get<any>(url);
-  }
 
-  actualizarProducto(prodId: string, producto: any): Observable<any> {
-    const url = `${this.apiUrl}/${prodId}`;
-    return this.http.put<any>(url, producto);
-  }
-
-  new_product(producto: any): Observable<any> {
-    // Realizar la lógica para enviar el producto al backend
-    return this.http.post<any>('/api/v1/productos/nuevoProd', producto);
-  }
-
-
-
-
-
-  agregarNuevoProducto(nuevoProducto: any): Observable<any> {
-    const headers = { 'Content-Type': 'application/json' };
-    
-    return this.http.post<any>('http://192.168.1.67:4000/api/v1/productos/nuevoProd', nuevoProducto, { headers }).pipe(
+  //nuevoProducto
+  guardarProducto(producto: any): Observable<any> {
+    const url = `${this.apiUrl}/nuevoProd`;
+    return this.http.post<any>(url, producto).pipe(
       tap((res: any) => {
-        if (res.message === 'producto insertado') {
-          console.log('servicio', res.message);
-        }
+        console.log('Producto guardado correctamente');
       }),
       catchError(err => {
-        return of(err.error.message);
+        console.error('Error al guardar producto:', err);
+        return throwError(err);
       })
     );
   }
   
+  actualizarProducto(prodId: string, producto: any): Observable<any> {
+    const url = `${this.apiUrl}/${prodId}`;
+    return this.http.put<any>(url, producto);
+  }
+  
 
-
+  obtenerProductoPorId(id: string): Observable<any> {
+    const url = `${this.apiUrl}/porID/${id}`;
+    return this.http.get<any>(url);
+  }
 //ACTUALIZAR 
 actualizarProductoPorId(id: string, producto: any): Observable<any> {
   const url = `${this.apiUrl}/actualizar/${id}`;

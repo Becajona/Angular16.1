@@ -1,64 +1,65 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
 
-    <!-- Bootstrap CSS v5.2.1 -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-        crossorigin="anonymous"
-    />
-</head>
-
-<body>
-
-    <div class="container-mt-5">
+    <div class="container mt-5">
         <h1>Catálogo Marcas</h1>
     </div>
+
+    <div>
+        <p>ID: {{ listaMarcas[2]._id}}</p>
+        <p>Marca ID: {{ listaMarcas[0].marcaId }}</p>
+        <p>Nombre: {{ listaMarcas[0].nombre }}</p>
+        <p>Segmento de mercado: {{ listaMarcas[0].segmentoMercado }}</p>
+        <p>Productos destacados: {{ listaMarcas[0].productosDestacados }}</p>
+        <p>Slogan: {{ listaMarcas[0].slogan }}</p>
+    </div>
+
     
-    <p>ID: {{ listaMarcas[0]._id["$oid"] }}</p>
-    <p>Marca ID: {{ listaMarcas[0].marcaId }}</p>
-    <p>Nombre: {{ listaMarcas[0].nombre }}</p>
-    
-    
-    <table class="table table-bordered">
+    <table class="table table-bordered mt-3">
         <thead class="thead-dark">
-        <tr>
-            <th>ID</th>
-            <th>Marca ID</th>
-            <th>Nombre</th>
-        </tr>
+            <tr>
+                <th>ID</th>
+                <th>Marca ID</th>
+                <th>Nombre</th>
+                <th>Segmento de mercado</th>
+                <th>Slogan</th>
+                <th>Productos destacados</th>
+                <th>Actualizar</th>
+                <th>Eliminar</th>
+            </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let marca of listaMarcas">
-            <td>{{ marca._id["$oid"] }}</td>
-            <td>{{ marca.marcaId }}</td>
-            <td>{{ marca.nombre }}</td>
-        </tr>
+            <tr *ngFor="let marca of listaMarcas">
+                <td>{{ marca._id }}</td>
+                <td>{{ marca.marcaId }}</td>
+                <td>{{ marca.nombre }}</td>
+                <td>{{ marca.segmentoMercado }}</td>
+                <td>{{ marca.slogan }}</td>
+                <td>{{ marca.productosDestacados }}</td>
+                <td>
+                    <a  [routerLink]="['/actualizarmarca', marca._id]"  class="btn btn-sm btn-primary">
+                        <i class="bi bi-pencil-square"></i> <!---->
+                    </a>
+                </td>
+                <td>
+                    <button [routerLink]="['/eliminarmarca', marca._id]"  class="btn btn-sm btn-danger">
+                        <i class="bi bi-trash"></i> <!--  de borrar -->
+                    </button>
+                </td>
+            </tr>
         </tbody>
     </table>
     
+    <button routerLink="/nuevaMarca"> Nueva marca</button>
 
-    <footer>
-    </footer>
-    <script
-        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"
-    ></script>
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+          <p>&copy; 2024 Jonathan Vega | Diseñado con Angular</p>
+          <div class="social-icons">
+            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+           
+          </div>
+        </div>
+      </footer>
 
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"
-    ></script>
-</body>
-</html>
+      

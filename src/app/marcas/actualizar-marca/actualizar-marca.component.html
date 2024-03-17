@@ -1,6 +1,6 @@
 <div class="container mt-5">
-    <h1>Crear Nueva Marca</h1>
-    <form [formGroup]="marcaForm" (ngSubmit)="agregarMarca()">
+    <h1>Actualizar Marca</h1>
+    <form >
       <div class="form-group">
         <label for="marcaId">Marca ID</label>
         <input type="text" class="form-control" id="marcaId" formControlName="marcaId" required>
@@ -21,9 +21,26 @@
         <label for="productosDestacados">Productos destacados</label>
         <input type="text" class="form-control" id="productosDestacados" formControlName="productosDestacados" required>
       </div>
+      <!-- Aquí puedes agregar más campos si es necesario -->
       <br>
-      <button type="submit" class="btn btn-primary">Crear Marca</button>
+      <button type="submit" class="btn btn-primary">Actualizar Marca</button>
     </form>
   </div>
   <br>
-  <button type="button"class="btn btn-lg btn-primary" routerLink="/catalogoMarcas">Regresar a catalogo</button>
+
+
+<button routerLink="/catalogoMarcas">Cancelar</button>
+
+<footer class="footer mt-auto py-3">
+    <div class="container text-center">
+      <p>&copy; 2024 Jonathan Vega | Diseñado con Angular</p>
+      <div class="social-icons">
+        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+       
+      </div>
+    </div>
+  </footer>
+
+  

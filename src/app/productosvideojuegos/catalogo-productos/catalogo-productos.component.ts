@@ -3,7 +3,6 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { FormsModule,FormControl ,Validators, FormGroup } from '@angular/forms';
-import { EliminarComponent } from '../eliminar/eliminar.component';
 
 // Importa el servicio correcto
 import { VideoJuegosService } from 'src/app/servicios/video-juegos.service';
@@ -21,19 +20,16 @@ export class CatalogoProductosComponent implements OnInit {
   page: number = 1; // Inicializa la página en 1
   itemsPerPage: number = 10; // Número de productos por página
   miProd: VideoJuego = {
-    clave: '',
     nombre: '',
     categoria: '',
-    marcasId: [],
+    marcasId: '',
     version: '',
-    idiomas: [],
+    idiomas: '',
     jugadores: 0,
     descripcion: '',
     costo: 0,
     precio: 0,
     foto: '',
-    fechaAdquisicion: '' ,
-    fecharegistro: '' ,
     cantidadExistente: 0,
     estado: '',
     origen: '',
@@ -71,7 +67,7 @@ export class CatalogoProductosComponent implements OnInit {
     this.miProd.foto = this.imagen1;
     console.log(this.miProd);
 
-    this.videojuegoService.agregarNuevoProducto(this.miProd).subscribe(data => {
+    this.videojuegoService.guardarProducto(this.miProd).subscribe(data => {
       console.log("PRODUCTO", data);
       if (data) {
         this.obtenerProductos(); // Actualizar lista de productos

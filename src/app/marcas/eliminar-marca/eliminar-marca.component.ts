@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MarcasService } from 'src/app/servicios/marcas.service';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-eliminar-marca',
@@ -10,34 +8,40 @@ import { throwError } from 'rxjs';
   styleUrls: ['./eliminar-marca.component.css']
 })
 export class EliminarMarcaComponent implements OnInit {
-  prodId: string | null = null;
-  messageErr: string | null = null;
+  marcaId: string | null = null;
+  messageErr: any;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private servicioProd: MarcasService
+    private servicioMarca: MarcasService
   ) { }
   
   ngOnInit(): void {
-    this.prodId = this.route.snapshot.paramMap.get('id');
-    console.log(this.prodId);
-//    this.eliminar();
+    this.marcaId = this.route.snapshot.paramMap.get('id');
+    console.log(this.marcaId);
   }
 
-//  eliminar(): void {
-//    this.servicioProd.eliminar(this.prodId)
-//      .pipe(
-//        catchError((error) => {
-//          this.messageErr = error.error.message;
-//          return throwError(error);
-//        })
-//      )
-//      .subscribe(() => {
-//        console.log('Producto eliminado correctamente');
-//        alert('Producto eliminado');
-//        // Redirecciona para cargar el componente catálogo
-//        this.router.navigate(['/catalogoMarcas']);
-//      });
-//  }
+  eliminarMarca(id: string | null) {
+    if (id) {
+      this.servicioMarca.eliminarMarca(id).subscribe(
+        () => {
+          console.log('Marca eliminada correctamente');
+          // Realizar cualquier otra acción después de eliminar la marca
+        },
+        error => {
+          console.error('Error al eliminar la marca:', error);
+          this.messageErr = error;
+        }
+      );
+    } else {
+      console.error('El ID de la marca es nulo.');
+    }
+  }
+
+  confirmarEliminacion(id: string) {
+    if (window.confirm('¿Estás seguro de que deseas eliminar esta marca?')) {
+      this.eliminarMarca(id);
+    }
+  }
 }

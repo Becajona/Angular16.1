@@ -1,25 +1,33 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NuevaMarcaComponent } from './nueva-marca/nueva-marca.component';
-import { CatalogoMarcasComponent } from './catalogo-marcas/catalogo-marcas.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Importa FormsModule y ReactiveFormsModule aquí
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { EliminarComponent } from './eliminar/eliminar.component';
-import { EliminarMarcaComponent } from './eliminar-marca/eliminar-marca.component';
 
+import { CatalogoMarcasComponent } from './catalogo-marcas/catalogo-marcas.component';
+import { NuevaMarcaComponent } from './nueva-marca/nueva-marca.component';
+import { EliminarMarcaComponent } from './eliminar-marca/eliminar-marca.component';
+import { ActualizarMarcaComponent } from './actualizar-marca/actualizar-marca.component';
+//Falta import { ActualizarProovedorComponent } from './actualizar-proovedor/actualizar-proovedor.component';
 
 
 @NgModule({
   declarations: [
-    NuevaMarcaComponent,
     CatalogoMarcasComponent,
-    EliminarComponent,
-    EliminarMarcaComponent
+    NuevaMarcaComponent,
+    EliminarMarcaComponent,
+    ActualizarMarcaComponent,
+
+
+
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule,
-    FormsModule
+  ],
+  exports: [
+    NuevaMarcaComponent
   ]
 })
 export class MarcasModule { }

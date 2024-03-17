@@ -7,16 +7,16 @@ import { MarcasService } from 'src/app/servicios/marcas.service';
   templateUrl: './catalogo-marcas.component.html',
   styleUrls: ['./catalogo-marcas.component.css']
 })
-export class CatalogoMarcasComponent implements OnInit{
-  listaMarcas:Marca[] = []
-  constructor(public api:MarcasService){}
+export class CatalogoMarcasComponent implements OnInit {
+  listaMarcas: Marca[] = [];
+
+  constructor(public api: MarcasService) { }
 
   ngOnInit(): void {
-    this.api.obtenerNew_api()
-    .subscribe((data)=>{
-      console.log(data)
-      this.listaMarcas = data;
-    })
+    this.api.obtenerTodosLasMarcas().subscribe((data: Marca[]) => {
+        console.log(data);
+        this.listaMarcas = data;
+      });
   }
 
 }

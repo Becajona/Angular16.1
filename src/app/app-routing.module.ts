@@ -1,16 +1,27 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
-import { ProveedoresModule } from './proveedores/proveedores.module';
 import { ProductosvideojuegosModule } from './productosvideojuegos/productosvideojuegos.module';
 import { LoginComponent } from './navegacion/login/login.component';
 import { CrearCuentaComponent } from './navegacion/crear-cuenta/crear-cuenta.component';
-import { NuevoProovedorComponent } from './proveedores/nuevo-proovedor/nuevo-proovedor.component';
-import { NuevaMarcaComponent } from './marcas/nueva-marca/nueva-marca.component';
-import { CatalogoMarcasComponent } from './marcas/catalogo-marcas/catalogo-marcas.component';
-import { VideoJuegosService } from './servicios/video-juegos.service';
-import { CatalogoProveedorComponent } from './proveedores/catalogo-proveedor/catalogo-proveedor.component';
 
+
+import { VideoJuegosService } from './servicios/video-juegos.service';
+
+//marcas
+import { MarcasService } from './servicios/marcas.service';
+
+import { CatalogoMarcasComponent } from './marcas/catalogo-marcas/catalogo-marcas.component';
+import { NuevaMarcaComponent } from './marcas/nueva-marca/nueva-marca.component';
+import { ActualizarMarcaComponent } from './marcas/actualizar-marca/actualizar-marca.component';
+
+
+//Prooveedores
+
+import { ProveedoresModule } from './proveedores/proveedores.module';
+import { NuevoProveedorComponent } from './proveedores/nuevo-proovedor/nuevo-proovedor.component';
+
+import { CatalogoProveedorComponent } from './proveedores/catalogo-proveedor/catalogo-proveedor.component';
 //eliminar
 import { EliminarMarcaComponent } from './marcas/eliminar-marca/eliminar-marca.component';
 import { EliminarProovedorComponent } from './proveedores/eliminar-proovedor/eliminar-proovedor.component';
@@ -51,7 +62,7 @@ const routes: Routes = [
             },
             {
               path:'nuevoProveedor',
-              component: NuevoProovedorComponent
+              component: NuevoProveedorComponent
               },
               {
                 path:'nuevaMarca',
@@ -74,7 +85,7 @@ const routes: Routes = [
                           component:ActualizarProductoComponent
                         },
                         {
-                          path:'eliminarproovedor',
+                          path:'eliminarproovedor/:id',
                           component: EliminarProovedorComponent
                           },
                           {
@@ -82,10 +93,14 @@ const routes: Routes = [
                             component: EliminarMarcaComponent
                             },
                             {
-                              path:'actualizarproovedor',
+                              path:'actualizarproovedor/:id',
                               component: ActualizarProovedorComponent
                               },
-
+                              {
+                                path:'actualizarmarca/:id',
+                                component: ActualizarMarcaComponent
+                                },
+                              
 ];
 
 @NgModule({
