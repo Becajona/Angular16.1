@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { VideoJuegosService } from 'src/app/servicios/video-juegos.service';
+import { Router } from '@angular/router'; // Import Router
 
 @Component({
   selector: 'app-nuevo-producto',
@@ -10,14 +11,14 @@ import { VideoJuegosService } from 'src/app/servicios/video-juegos.service';
 export class NuevoProductoComponent implements OnInit {
   imagen: any;
   productosForms: FormGroup;
+  imagen1: any;
+  miProd: any;
 
-  constructor(private videoJuegosService: VideoJuegosService) {
+  constructor(private videoJuegosService: VideoJuegosService, private router: Router) {
     this.productosForms = new FormGroup({
-      _id: new FormControl('', Validators.required),
       clave: new FormControl('', Validators.required),
       nombre: new FormControl('', Validators.required),
       categoria: new FormControl('', Validators.required),
-      tipo: new FormControl('', Validators.required),
       marcasId: new FormControl('', Validators.required),
       version: new FormControl('', Validators.required),
       idiomas: new FormControl('', Validators.required),
@@ -27,7 +28,6 @@ export class NuevoProductoComponent implements OnInit {
       precio: new FormControl('', Validators.required),
       foto: new FormControl('', Validators.required),
       fechaAdquisicion: new FormControl('', Validators.required),
-      fecharegistro: new FormControl('', Validators.required),
       cantidadExistente: new FormControl('', Validators.required),
       estado: new FormControl('', Validators.required),
       origen: new FormControl('', Validators.required),
@@ -36,16 +36,33 @@ export class NuevoProductoComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Puedes agregar lógica de inicialización si es necesario
+    this.miProd = {
+      _id: '',
+      clave: '',
+      nombre: '',
+      categoria: '',
+      marcasId: [],
+      version: '',
+      idiomas: [],
+      jugadores: 0,
+      descripcion: '',
+      costo: 0,
+      precio: 0,
+      foto: '',
+      fechaAdquisicion: '',
+      fecharegistro: '',
+      cantidadExistente: 0,
+      estado: '',
+      origen: '',
+      provId: ''
+    };
   }
 
-  convertirB64(event: any) {
+  convertir_B64(event: any) {
     if (event.target.files && event.target.files[0]) {
-      const file = event.target.files[0];
+      var file = event.target.files[0];
       const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.imagen = e.target.result;
-      };
+      reader.onload = e => this.imagen1 = reader.result;
       reader.readAsDataURL(file);
     }
   }
@@ -53,8 +70,7 @@ export class NuevoProductoComponent implements OnInit {
   onSubmit() {
     if (this.productosForms.valid) {
       const producto = this.productosForms.value;
-      producto.foto = this.imagen; // Asigna la imagen al producto
-      // Agrega un console.log para depurar y verificar los datos antes de enviarlos al servicio
+      producto.foto = this.imagen;
       console.log('Producto a enviar:', producto);
       this.videoJuegosService.agregarNuevoProducto(producto).subscribe(response => {
         console.log('Producto agregado:', response);
@@ -63,5 +79,20 @@ export class NuevoProductoComponent implements OnInit {
     } else {
       console.error("El formulario es inválido.");
     }
+  }
+
+  enviarProd() {
+    this.miProd.costo = Number(this.miProd.costo);
+    this.miProd.foto = this.imagen1;
+    console.log(this.miProd);
+    
+    this.videoJuegosService.new_product(this.miProd).subscribe(data => {
+      console.log("PRODUCTO", data);
+      if (data) {
+        this.router.navigateByUrl('/prodCatalogo');
+      } else {
+        console.log("error");
+      }
+    });
   }
 }

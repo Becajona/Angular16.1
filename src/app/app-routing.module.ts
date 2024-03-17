@@ -66,11 +66,11 @@ const routes: Routes = [
                     component: CatalogoMarcasComponent
                     },
                       {
-                        path:'productoseliminar',///:id
+                        path:'productoseliminar/:id',
                         component:EliminarComponent
                       }, 
                         {
-                          path:'actualizarproducto',
+                          path:'actualizarproducto/:id',
                           component:ActualizarProductoComponent
                         },
                         {

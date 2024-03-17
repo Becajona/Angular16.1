@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { FormsModule,FormControl ,Validators, FormGroup } from '@angular/forms';
+import { EliminarComponent } from '../eliminar/eliminar.component';
 
 // Importa el servicio correcto
 import { VideoJuegosService } from 'src/app/servicios/video-juegos.service';
@@ -22,10 +23,7 @@ export class CatalogoProductosComponent implements OnInit {
   miProd: VideoJuego = {
     clave: '',
     nombre: '',
-    categoria: {
-      categoria: '',
-      tipo: ''
-    },
+    categoria: '',
     marcasId: [],
     version: '',
     idiomas: [],
@@ -83,6 +81,8 @@ export class CatalogoProductosComponent implements OnInit {
       }
     });
   }
+
+
 
   actualizarProducto(id: string) {
     // Aquí debes implementar la lógica para obtener los datos del producto por su ID y redirigir a la página de actualización

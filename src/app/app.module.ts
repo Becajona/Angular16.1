@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProductosvideojuegosModule } from './productosvideojuegos/productosvideojuegos.module'; 
+import { VideoJuegosService } from './servicios/video-juegos.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import { ProductosvideojuegosModule } from './productosvideojuegos/productosvide
     NgxPaginationModule,
     RouterModule.forRoot([])
   ],
-  providers: [],
+  providers: [
+    VideoJuegosService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

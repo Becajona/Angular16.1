@@ -2,10 +2,7 @@ export interface VideoJuego {
     _id: string;
     clave: string;
     nombre: string;
-    categoria: {
-      categoria: string;
-      tipo: string;
-    };
+    categoria:string;
     marcasId: string[];
     version: string;
     idiomas: string[];

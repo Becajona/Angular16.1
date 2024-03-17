@@ -4,84 +4,56 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <label for="_id">ID</label>
-          <input type="text" class="form-control" id="_id" formControlName="_id" placeholder="Ingrese el ID del producto">
-        </div>
-        <div class="form-group">
           <label for="clave">Clave</label>
-          <input type="text" class="form-control" id="clave" formControlName="clave" placeholder="Ingrese la clave del producto">
+          <input type="text" class="form-control" id="clave" formControlName="clave" placeholder="Ingrese la clave del producto" [ngModel]="miProd.clave">
+          <div class="alert alert-danger mt-2" [hidden]="">
+            el campo es obligatorio
+          </div>
         </div>
         <div class="form-group">
           <label for="nombre">Nombre</label>
-          <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Ingrese el nombre del producto">
+          <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Ingrese el nombre del producto" [ngModel]="miProd.nombre" >
         </div>
-        <div class="form-group">
-          <label for="version">Versión</label>
-          <input type="text" class="form-control" id="version" formControlName="version" placeholder="Ingrese la versión del producto">
-        </div>
+        <!-- Resto de los campos de entrada -->
         <div class="form-group">
           <label for="descripcion">Descripción</label>
-          <textarea class="form-control" id="descripcion" formControlName="descripcion" rows="3" placeholder="Ingrese la descripción del producto"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="idiomas">Idiomas</label>
-          <input type="text" class="form-control" id="idiomas" formControlName="idiomas" placeholder="Ingrese los idiomas del producto separados por coma">
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="categoria">Categoría</label>
-          <input type="text" class="form-control" id="categoria" formControlName="categoria" placeholder="Ingrese la categoría del producto">
-        </div>
-        <div class="form-group">
-          <label for="tipo">Tipo</label>
-          <input type="text" class="form-control" id="tipo" formControlName="tipo" placeholder="Ingrese el tipo del producto">
-        </div>
-        <div class="form-group">
-          <label for="jugadores">Jugadores</label>
-          <input type="number" class="form-control" id="jugadores" formControlName="jugadores" placeholder="Ingrese la cantidad de jugadores">
+          <textarea class="form-control" id="descripcion" formControlName="descripcion" rows="3" placeholder="Ingrese la descripción del producto" [ngModel]="miProd.descripcion" ></textarea>
         </div>
         <div class="form-group">
           <label for="costo">Costo</label>
-          <input type="number" class="form-control" id="costo" formControlName="costo" placeholder="Ingrese el costo del producto">
+          <input type="number" class="form-control" id="costo" formControlName="costo" placeholder="Ingrese el costo del producto" [ngModel]="miProd.costo">
         </div>
         <div class="form-group">
           <label for="precio">Precio</label>
-          <input type="number" class="form-control" id="precio" formControlName="precio" placeholder="Ingrese el precio del producto">
+          <input type="number" class="form-control" id="precio" formControlName="precio" placeholder="Ingrese el precio del producto" [ngModel]="miProd.precio">
         </div>
-        <div class="form-group">
-          <label for="foto">Foto</label>
-          <input type="text" class="form-control" id="foto" formControlName="foto" placeholder="Ingrese la URL de la foto del producto">
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
         <div class="form-group">
           <label for="fechaAdquisicion">Fecha de Adquisición</label>
-          <input type="date" class="form-control" id="fechaAdquisicion" formControlName="fechaAdquisicion">
+          <input type="date" class="form-control" id="fechaAdquisicion" formControlName="fechaAdquisicion" [ngModel]="miProd.fechaAdquisicion">
         </div>
       </div>
       <div class="col-md-6">
+        <!-- Campos de entrada restantes -->
+        <div class="form-group">
+          <label>foto</label>
+          <input type="file" class="form-control" accept="image/*" (change)="convertir_B64($event)" [ngModel]="miProd.foto" required>
+        </div>
         <div class="form-group">
           <label for="cantidadExistente">Cantidad Existente</label>
           <input type="number" class="form-control" id="cantidadExistente" formControlName="cantidadExistente" placeholder="Ingrese la cantidad existente del producto">
         </div>
         <div class="form-group">
-          <label for="estado">Estado</label>
-          <input type="text" class="form-control" id="estado" formControlName="estado" placeholder="Ingrese el estado del producto">
-        </div>
-        <div class="form-group">
           <label for="origen">Origen</label>
-          <input type="text" class="form-control" id="origen" formControlName="origen" placeholder="Ingrese el origen del producto">
+          <input type="text" class="form-control" id="origen" formControlName="origen" placeholder="Ingrese el origen del producto" [ngModel]="miProd.origen" required>
         </div>
         <div class="form-group">
           <label for="provId">Proveedor ID</label>
-          <input type="text" class="form-control" id="provId" formControlName="provId" placeholder="Ingrese el ID del proveedor del producto">
+          <input type="text" class="form-control" id="provId" formControlName="provId" placeholder="Ingrese el ID del proveedor del producto" [ngModel]="miProd.provId"   required>
         </div>
       </div>
     </div>
     <br>
-    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="submit" class="me-2 btn btn-outline-dark">Crear Producto</button>
   </form>
 </div>
+

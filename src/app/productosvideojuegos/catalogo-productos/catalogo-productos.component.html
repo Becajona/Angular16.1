@@ -12,10 +12,8 @@
 <div class="row">
   <div class="col">
     <p>ID: {{ listaProductos[1]._id }}</p>
-    <p>Clave: {{ listaProductos[0].clave }}</p>
     <p>Nombre: {{ listaProductos[0].nombre }}</p>
-    <p>Categoría: {{ listaProductos[0].categoria.categoria }}</p>
-    <p>Tipo: {{ listaProductos[0].categoria.tipo }}</p>
+    <p>Categoría: {{ listaProductos[0].categoria}}</p>
     <p>Marcas ID: {{ listaProductos[0].marcasId }}</p>
   </div>
   <div class="col">
@@ -28,8 +26,6 @@
   </div>
   <div class="col">
     <p>Foto: {{ listaProductos[0].foto }}</p>
-    <p>Fecha de Adquisición: {{ listaProductos[0].fechaAdquisicion }}</p>
-    <p>Fecha de Registro: {{ listaProductos[0].fecharegistro }}</p>
     <p>Cantidad Existente: {{ listaProductos[0].cantidadExistente }}</p>
     <p>Estado: {{ listaProductos[0].estado }}</p>
     <p>Origen: {{ listaProductos[0].origen }}</p>
@@ -47,10 +43,8 @@
     <thead class="thead-dark">
       <tr>
         <th>ID</th>
-        <th>Clave</th>
         <th>Nombre</th>
         <th>Categoría</th>
-        <th>Tipo</th>
         <th>Marcas ID</th>
         <th>Versión</th>
         <th>Idiomas</th>
@@ -59,22 +53,21 @@
         <th>Costo</th>
         <th>Precio</th>
         <th>Foto</th>
-        <th>Fecha de Adquisición</th>
-        <th>Fecha de Registro</th>
+
         <th>Cantidad Existente</th>
         <th>Estado</th>
         <th>Origen</th>
         <th>Prov ID</th>
         <th>Acciones</th>
+        <th>Acciones</th>
+        
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let producto of listaProductos | slice: (page-1)*itemsPerPage : page*itemsPerPage">
         <td>{{ producto._id }}</td>
-        <td>{{ producto.clave }}</td>
         <td>{{ producto.nombre }}</td>
-        <td>{{ producto.categoria.categoria }}</td>
-        <td>{{ producto.categoria.tipo }}</td>
+        <td>{{ producto.categoria }}</td>
         <td>{{ producto.marcasId }}</td>
         <td>{{ producto.version }}</td>
         <td>{{ producto.idiomas }}</td>
@@ -83,20 +76,18 @@
         <td>{{ producto.costo }}</td>
         <td>{{ producto.precio }}</td>
         <td>{{ producto.foto }}</td>
-        <td>{{ producto.fechaAdquisicion }}</td>
-        <td>{{ producto.fecharegistro }}</td> 
         <td>{{ producto.cantidadExistente }}</td>
         <td>{{ producto.estado }}</td>
         <td>{{ producto.origen }}</td>
         <td>{{ producto.provId }}</td>
         <td>
-          <button (click)="actualizarProducto(producto._id)" routerLink="/actualizarproducto" class="btn btn-primary btn-sm">
-            <i class="bi bi-pencil-square"></i>
-          </button>
-            
-          <button routerLink="/productoseliminar" class="btn btn-danger btn-sm">
-            <i class="bi bi-trash"></i> <!-- Icono de borrar -->
-          </button>
+          <a [routerLink]="['/productoseliminar', producto._id]">
+            <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
+          </a>
+        </td>
+        <td>
+          <a [routerLink]="['/actualizarproducto', producto._id]">Actualizar</a>
+          <i class="bi bi-pencil-square"></i>
         </td>
       </tr>
     </tbody>

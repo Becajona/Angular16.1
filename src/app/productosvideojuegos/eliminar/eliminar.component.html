@@ -1,15 +1,6 @@
-<!-- catalogo-productos.component.html -->
-
-<form ><!--(submit)="eliminarProducto()"-->
-    <div class="form-group">
-      <label for="productoId">ID del Producto:</label>
-      <!--<input type="text" class="form-control" id="productoId" name="productoId" [(ngModel)]="productoId" required>-->
-    </div>
-    <button type="submit" class="btn btn-danger">Eliminar Producto</button>
-  </form>
-  <br>
-
-  
-
-<button routerLink="/productosCatalogos" class="btn btn-primary">Regresar</button>
-
+<div>
+  <h2>¿Estás seguro de que deseas eliminar este producto?</h2>
+  <!-- Aquí puedes mostrar información adicional sobre el producto, como su nombre, precio, etc. -->
+  <button (click)="eliminarProducto(prodId)">Eliminar</button>
+</div>
+<button routerLink="/productosCatalogos">Cancelar</button>
