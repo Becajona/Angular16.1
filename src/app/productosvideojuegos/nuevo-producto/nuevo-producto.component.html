@@ -66,10 +66,19 @@
           <label for="origen">Origen</label>
           <input type="text" class="form-control" id="origen" formControlName="origen" placeholder="Ingrese el origen del producto" required>
         </div>
+
+
         <div class="form-group">
           <label for="provId">Proveedor ID</label>
-          <input type="text" class="form-control" id="provId" formControlName="provId" placeholder="Ingrese el ID del proveedor del producto" required>
+          <select class="form-control" id="provId" formControlName="provId" required>
+            <option value="">Selecciona un proveedor</option>
+            <!-- Itera sobre los proveedores disponibles y crea opciones para cada uno -->
+            <option *ngFor="let proveedor of proveedores" [value]="proveedor.provId">{{ proveedor.nombre }}</option>
+          </select>
         </div>
+        
+
+        
       </div>
     </div>
     <br>

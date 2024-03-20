@@ -19,7 +19,8 @@ export class ActualizarProovedorComponent implements OnInit {
     nombre: '', 
     direccion: '', 
     correoElectronico: '', 
-    telefono: ''
+    telefono: '',
+    proveedorId: ''
   };
 
   constructor(private router: ActivatedRoute, private proveedoresService: ProveedoresService) {

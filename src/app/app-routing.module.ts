@@ -35,6 +35,19 @@ import { EliminarComponent } from './productosvideojuegos/eliminar/eliminar.comp
 import { ActualizarProductoComponent } from './productosvideojuegos/actualizar-producto/actualizar-producto.component';
 
 
+//Empleados
+import { NuevoEmpleadoComponent } from './empleados/nuevo-empleado/nuevo-empleado.component';
+import { ActualizarEmpleadoComponent } from './empleados/actualizar-empleado/actualizar-empleado.component';
+import { EliminarEmpleadoComponent } from './empleados/eliminar-empleado/eliminar-empleado.component';
+import { CatalogoEmpleadoComponent } from './empleados/catalogo-empleado/catalogo-empleado.component';
+
+//usuarios
+import { CatalogoUsuarioComponent } from './usuarios/catalogo-usuario/catalogo-usuario.component';
+import { EliminarUsuarioComponent } from './usuarios/eliminar-usuario/eliminar-usuario.component';
+import { ActualizarUsuarioComponent } from './usuarios/actualizar-usuario/actualizar-usuario.component';
+import { NuevoUsuarioComponent } from './usuarios/nuevo-usuario/nuevo-usuario.component';
+
+
 const routes: Routes = [
   {
   path:'productosCatalogos',
@@ -99,8 +112,24 @@ const routes: Routes = [
                               {
                                 path:'actualizarmarca/:id',
                                 component: ActualizarMarcaComponent
-                                },
-                              
+                                }, 
+                                {
+                                  path:'catalogoEmpleado',
+                                  component: CatalogoEmpleadoComponent
+                                  },
+                                  {
+                                    path:'actualizarempleado',
+                                    component: ActualizarEmpleadoComponent
+                                    },
+                                    {
+                                      path:'catalogousuario',
+                                      component: CatalogoUsuarioComponent
+                                      },
+                                      {
+                                        path:'nuevousuario',
+                                        component: NuevoUsuarioComponent
+                                        },
+                                
 ];
 
 @NgModule({

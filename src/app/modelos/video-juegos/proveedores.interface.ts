@@ -5,4 +5,6 @@ export interface Proveedores {
     direccion: string;
     correoElectronico: string;
     telefono: string;
-}
+    proveedorId: string; // Agregar esta línea
+  }
+  

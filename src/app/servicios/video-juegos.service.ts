@@ -41,7 +41,27 @@ export class VideoJuegosService {
     const url = `${this.apiUrl}/porID/${id}`;
     return this.http.get<any>(url);
   }
+
   
+  
+  //proveedores Id
+
+  obtenerTodosLosProveedores(): Observable<any[]> {
+    // Usa el servicio de proveedores para obtener todos los proveedores
+    const proveedoresUrl = 'http://192.168.1.67:4000/api/v1/proveedores/get_all';
+    return this.http.get<any[]>(proveedoresUrl).pipe(
+      tap(data => console.log('Proveedores obtenidos del servidor:', data)),
+      catchError(err => {
+        console.error('Error al obtener los proveedores del servidor:', err);
+        return throwError(err);
+      })
+    );
+  }
+
+///////////////////////////////////////////////
+
+
+
 //ACTUALIZAR 
 actualizarProductoPorId(id: string, producto: any): Observable<any> {
   const url = `${this.apiUrl}/actualizar/${id}`;

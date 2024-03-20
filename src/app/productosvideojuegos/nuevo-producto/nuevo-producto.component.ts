@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { VideoJuegosService } from 'src/app/servicios/video-juegos.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { VideoJuegosService } from 'src/app/servicios/video-juegos.service';
+import { ProveedoresService } from 'src/app/servicios/proveedores.service';
 
 @Component({
   selector: 'app-nuevo-producto',
@@ -12,11 +13,14 @@ export class NuevoProductoComponent implements OnInit {
   productosForms: FormGroup;
   miProd: any;
   imagen1: any;
+  proveedores: any[] = [];
 
-
-  constructor(private fb: FormBuilder,
-              private videoJuegosService: VideoJuegosService,
-              private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private videoJuegosService: VideoJuegosService,
+    private proveedoresService: ProveedoresService,
+    private router: Router
+  ) {
     this.productosForms = this.fb.group({
       nombre: ['', Validators.required],
       categoria: ['', Validators.required],
@@ -31,7 +35,7 @@ export class NuevoProductoComponent implements OnInit {
       cantidadExistente: [0, Validators.required],
       estado: ['', Validators.required],
       origen: ['', Validators.required],
-      provId: ['', Validators.required],
+      provId: ['', Validators.required] // Campo para el proveedor
     });
   }
 
@@ -52,35 +56,47 @@ export class NuevoProductoComponent implements OnInit {
       origen: '',
       provId: ''
     };
+    this.obtenerProveedores();
+  }
+
+  obtenerProveedores() {
+    this.proveedoresService.obtenerTodosLosProveedores().subscribe(
+      (data: any[]) => {
+        this.proveedores = data;
+      },
+      error => {
+        console.error('Error al obtener los proveedores:', error);
+      }
+    );
   }
 
   agregarProducto() {
-    const videoJuegosService = {
-      nombre: this.productosForms.get('nombre')?.value,
-      categoria: this.productosForms.get('categoria')?.value,
-      marcasId: this.productosForms.get('marcasId')?.value,
-      version: this.productosForms.get('version')?.value,
-      idiomas: this.productosForms.get('idiomas')?.value,
-      jugadores: this.productosForms.get('jugadores')?.value,
-      descripcion: this.productosForms.get('descripcion')?.value,
-      costo: this.productosForms.get('costo')?.value,
-      precio: this.productosForms.get('precio')?.value,
-      foto: this.productosForms.get('foto')?.value,
-      cantidadExistente: this.productosForms.get('cantidadExistente')?.value,
-      estado: this.productosForms.get('estado')?.value,
-      origen: this.productosForms.get('origen')?.value,
-      provId: this.productosForms.get('provId')?.value
-    };
-
-    console.log(videoJuegosService);
-    this.videoJuegosService.guardarProducto(videoJuegosService).subscribe(data => {
-      this.router.navigate(['/']);
-    }, error => {
-      console.log(error);
-      this.productosForms.reset();
-    });
+    if (this.productosForms.valid) {
+      const producto = this.productosForms.value;
+  
+      // Verificar que el control 'provId' existe y no es null
+      const provIdControl = this.productosForms.get('provId');
+      if (provIdControl) {
+        // Asignar el valor del control 'provId' al producto
+        producto.provId = provIdControl.value;
+  
+        this.videoJuegosService.guardarProducto(producto).subscribe(
+          (data) => {
+            console.log('Producto guardado correctamente:', data);
+            this.router.navigate(['/']); // Navegar a la página principal después de guardar el producto
+          },
+          (error) => {
+            console.error('Error al guardar el producto:', error);
+            this.productosForms.reset(); // Restablecer el formulario si hay un error
+          }
+        );
+      } else {
+        console.error('El control provId no existe en el formulario.');
+      }
+    } else {
+      console.error('El formulario es inválido.');
+    }
   }
-
 
   onSubmit() {
     if (this.productosForms.valid) {
@@ -91,23 +107,16 @@ export class NuevoProductoComponent implements OnInit {
         // Realiza cualquier otra acción necesaria después de agregar el producto
       });
     } else {
-      console.error("El formulario es inválido.");
+      console.error('El formulario es inválido.');
     }
   }
 
   convertir_B64(event: any) {
-    
-    if (event.target.files && event.target.files[0])
-    {
-    var file = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = e => this.imagen1 =
-    reader.result;
-    reader.readAsDataURL(file);
-    
+    if (event.target.files && event.target.files[0]) {
+      var file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = e => this.imagen1 = reader.result;
+      reader.readAsDataURL(file);
     }
-    }
-
-
-
+  }
 }
