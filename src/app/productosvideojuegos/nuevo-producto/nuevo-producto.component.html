@@ -56,7 +56,7 @@
         </div>
         <div class="form-group">
           <label for="foto">Foto</label>
-          <input type="text" class="form-control" id="foto" formControlName="foto" accept="image/*"  required><!--(change)="convertir_B64($event)"-->
+          <input type="file" class="form-control" id="foto" formControlName="foto" accept="image/*" (change)="convertir_B64($event)" required><!--(change)="convertir_B64($event)"-->
         </div>
         <div class="form-group">
           <label for="cantidadExistente">Cantidad Existente</label>
@@ -77,6 +77,8 @@
   </form>
 </div>
 <br>
-<button routerLink="/productosCatalogos">Cancelar</button>
+
+<button routerLink="/productosCatalogos" class="btn btn-secondary">Cancelar</button>
+
 
 

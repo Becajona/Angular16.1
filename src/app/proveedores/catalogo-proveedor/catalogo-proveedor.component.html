@@ -1,60 +1,72 @@
-        <title>Title</title>
-        <div class="container mt-5">
-            <h1>Lista de Proveedores</h1>
-            <br><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Lista de Proveedores</h1>
+    </div>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col">
+                <p>ID: {{ listaProveedor[0]._id}}</p>
+                <p>Nombre: {{ listaProveedor[0].nombre }}</p>
+                <p>Dirección: {{ listaProveedor[0].direccion }}</p>
+                <p>Correo Electrónico: {{ listaProveedor[0].correoElectronico }}</p>
+                <p>Teléfono: {{ listaProveedor[0].telefono }}</p>
+                <p>ProvId:{{ listaProveedor[0].provId }}</p>
+            </div>
         </div>
+    </div>
 
-        <div>
-            <p>ID: {{ listaProveedor[0]._id}}</p>
-            <p>Nombre: {{ listaProveedor[0].nombre }}</p>
-            <p>Dirección: {{ listaProveedor[0].direccion }}</p>
-            <p>Correo Electrónico: {{ listaProveedor[0].correoElectronico }}</p>
-            <p>Teléfono: {{ listaProveedor[0].telefono }}</p>
-            <p>ProvId:{{ listaProveedor[0].provId }}</p>
-        </div>
-        
-        
-        <div>
-            <table class="table table-bordered">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Dirección</th>
-                        <th>Correo Electrónico</th>
-                        <th>Teléfono</th>
-                        <th>ProvId</th>
-                        <th>Actualizar</th>
-                        <th>Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let proveedor of listaProveedor">
-                        <td>{{ proveedor._id }}</td>
-                        <td>{{ proveedor.nombre }}</td>
-                        <td>{{ proveedor.direccion }}</td>
-                        <td>{{ proveedor.correoElectronico }}</td>
-                        <td>{{ proveedor.telefono }}</td>
-                        <td>{{ proveedor.provId }}</td>
-                        <td>
-                            <a  [routerLink]="['/actualizarproovedor', proveedor._id]" class="btn btn-sm btn-primary">
-                                <i class="bi bi-pencil-square"></i> <!-- Icono de modificar -->
-                            </a>
-                        </td>
-                        <td>
-                            <button [routerLink]="['/eliminarproovedor', proveedor._id]" class="btn btn-sm btn-danger">
-                                <i class="bi bi-trash"></i> <!-- Icono de borrar -->
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="container mt-3">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Dirección</th>
+                    <th>Correo Electrónico</th>
+                    <th>Teléfono</th>
+                    <th>ProvId</th>
+                    <th>Actualizar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let proveedor of listaProveedor">
+                    <td>{{ proveedor._id }}</td>
+                    <td>{{ proveedor.nombre }}</td>
+                    <td>{{ proveedor.direccion }}</td>
+                    <td>{{ proveedor.correoElectronico }}</td>
+                    <td>{{ proveedor.telefono }}</td>
+                    <td>{{ proveedor.provId }}</td>
+                    <td>
+                        <a [routerLink]="['/actualizarproovedor', proveedor._id]" class="btn btn-sm btn-primary">
+                            <i class="bi bi-pencil-square"></i> Actualizar
+                        </a>
+                    </td>
+                    <td>
+                        <button [routerLink]="['/eliminarproovedor', proveedor._id]" class="btn btn-sm btn-danger">
+                            <i class="bi bi-trash"></i> Eliminar
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-        <button routerLink="/nuevoProveedor" >Nuevo Proovedor</button>
-        
+    <div class="container mt-3">
+        <button routerLink="/nuevoProveedor" class="btn btn-primary">Nuevo Proveedor</button>
+    </div>
 
-
-
-
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

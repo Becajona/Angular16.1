@@ -1,4 +1,4 @@
-<form [formGroup]="productosForms" (ngSubmit)="obtenerProductoPorId()">
+<form [formGroup]="productosForms" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="nombre">Nombre:</label>
     <input type="text" class="form-control" formControlName="nombre">
@@ -57,5 +57,8 @@
   </div>
   <br>
   <br>
-  <button type="submit" class="btn btn-primary">Actualizar Producto</button>
+  <button type="submit" class="btn btn-primary" >Actualizar Producto</button>
 </form>
+
+<br>
+<button routerLink="/productosCatalogos">Cancelar</button>

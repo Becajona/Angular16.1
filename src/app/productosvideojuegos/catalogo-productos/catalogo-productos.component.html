@@ -35,7 +35,7 @@
     <p>Prov ID: {{ listaProductos[0].provId }}</p>
   </div>
 </div>
-<hr> <!-- Separador entre productos -->
+<hr> 
 
 
 
@@ -61,13 +61,15 @@
         <th>Estado</th>
         <th>Origen</th>
         <th>Prov ID</th>
-        <th>Acciones</th>
-        <th>Acciones</th>
+        <th>Eliminar</th>
+        <th>Actualizar</th>
         
       </tr>
     </thead>
     <tbody>
+
       <tr *ngFor="let producto of listaProductos | slice: (page-1)*itemsPerPage : page*itemsPerPage">
+
         <td>{{ producto._id }}</td>
         <td>{{ producto.nombre }}</td>
         <td>{{ producto.categoria }}</td>
@@ -83,26 +85,26 @@
         <td>{{ producto.estado }}</td>
         <td>{{ producto.origen }}</td>
         <td>{{ producto.provId }}</td>
+
         <td>
-          <a [routerLink]="['/productoseliminar', producto._id]">
+          <a [routerLink]="['/productoseliminar', producto._id]" class="btn btn-danger">
             <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
           </a>
         </td>
         <td>
-          <a [routerLink]="['/actualizarproducto', producto._id]">Actualizar</a>
-          <i class="bi bi-pencil-square" aria-hidden="true"></i>
+          <a [routerLink]="['/actualizarproducto', producto._id]" class="btn btn-success">Actualizar</a>
+          
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-<br><br>
-<!-- Paginación -->
+<br>
+<br>
+
+
 <div class="pagination justify-content-center">
   <button class="btn btn-secondary mr-2" (click)="previousPage()">Anterior</button>
-  <br>
   <span class="align-self-center">Página {{ page }} de {{ totalPages }}</span>
-  <br>
   <button class="btn btn-secondary ml-2" (click)="nextPage()">Siguiente</button>
 </div>
-

@@ -27,7 +27,7 @@ export class ProveedoresService {
 
   //Nuevoproveedor
   guardarProveedor(proveedor: any): Observable<any> {
-    const url = `${this.apiUrl}/nuevoprove`; // Reemplaza '/nuevoprove' con la ruta adecuada en tu API
+    const url = `${this.apiUrl}/nuevoprove`; 
     return this.http.post<any>(url, proveedor).pipe(
       tap((res: any) => {
         console.log('Proveedor guardado correctamente');
@@ -40,8 +40,29 @@ export class ProveedoresService {
   }
 
 
+  //Actualizar 
+
+  actualizarProveedorPorId(id: string, proveedor: any): Observable<any> {
+    const url = `${this.apiUrl}/actualizar/${id}`;
+    return this.http.put<any>(url, proveedor).pipe(
+      tap((res: any) => {
+        console.log('Proveedor actualizado correctamente');
+      }),
+      catchError(err => {
+        console.error('Error al actualizar proveedor:', err);
+        return throwError(err);
+      })
+    );
+  }
+  obtenerProveedorPorId(id: string): Observable<any> {
+    const url = `${this.apiUrl}/porID/${id}`;
+    return this.http.get<any>(url);
+  }
+  
+
+
   eliminarProveedor(id: string): Observable<any> {
-    const url = `${this.apiUrl}/eliminar/${id}`; // Cambia 'eliminar' por la ruta adecuada en tu API
+    const url = `${this.apiUrl}/eliminar/${id}`; 
     return this.http.delete<any>(url).pipe(
       tap((res: any) => {
         console.log('Proveedor eliminado correctamente');

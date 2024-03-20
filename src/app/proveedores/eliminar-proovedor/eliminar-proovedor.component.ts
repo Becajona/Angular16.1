@@ -27,7 +27,6 @@ export class EliminarProovedorComponent implements OnInit {
       this.servicioProv.eliminarProveedor(id).subscribe(
         () => {
           console.log('Proveedor eliminado correctamente');
-          // Realizar cualquier otra acción después de eliminar el proveedor
         },
         error => {
           console.error('Error al eliminar el proveedor:', error);

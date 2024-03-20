@@ -37,16 +37,11 @@ export class VideoJuegosService {
     );
   }
   
-  actualizarProducto(prodId: string, producto: any): Observable<any> {
-    const url = `${this.apiUrl}/${prodId}`;
-    return this.http.put<any>(url, producto);
-  }
-  
-
   obtenerProductoPorId(id: string): Observable<any> {
     const url = `${this.apiUrl}/porID/${id}`;
     return this.http.get<any>(url);
   }
+  
 //ACTUALIZAR 
 actualizarProductoPorId(id: string, producto: any): Observable<any> {
   const url = `${this.apiUrl}/actualizar/${id}`;

@@ -52,24 +52,25 @@ export class ActualizarProductoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.prodId = this.router.snapshot.paramMap.get('/:id');
+    this.prodId = this.router.snapshot.paramMap.get('id'); // Corrige la obtención del ID de la URL
     console.log('ID del producto:', this.prodId);
     if (this.prodId) {
       this.obtenerProductoPorId();
     }
   }
-
   
   onSubmit() {
     if (this.productosForms.valid && this.prodId) {
       const producto = this.productosForms.value;
       this.videoJuegosService.actualizarProductoPorId(this.prodId, producto).subscribe(response => {
         console.log('Producto actualizado:', response);
+        // Aquí puedes redirigir a la página de detalle del producto actualizado
       });
     } else {
       console.error("El formulario es inválido o el ID del producto es nulo.");
     }
   }
+  
   
   
   obtenerProductoPorId(): void {

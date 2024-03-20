@@ -1,18 +1,21 @@
+<div class="container mt-5">
+    <h1>Catálogo Marcas</h1>
+</div>
 
-    <div class="container mt-5">
-        <h1>Catálogo Marcas</h1>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p>ID: {{ listaMarcas[2]._id}}</p>
+            <p>Marca ID: {{ listaMarcas[0].marcaId }}</p>
+            <p>Nombre: {{ listaMarcas[0].nombre }}</p>
+            <p>Segmento de mercado: {{ listaMarcas[0].segmentoMercado }}</p>
+            <p>Productos destacados: {{ listaMarcas[0].productosDestacados }}</p>
+            <p>Slogan: {{ listaMarcas[0].slogan }}</p>
+        </div>
     </div>
+</div>
 
-    <div>
-        <p>ID: {{ listaMarcas[2]._id}}</p>
-        <p>Marca ID: {{ listaMarcas[0].marcaId }}</p>
-        <p>Nombre: {{ listaMarcas[0].nombre }}</p>
-        <p>Segmento de mercado: {{ listaMarcas[0].segmentoMercado }}</p>
-        <p>Productos destacados: {{ listaMarcas[0].productosDestacados }}</p>
-        <p>Slogan: {{ listaMarcas[0].slogan }}</p>
-    </div>
-
-    
+<div class="container">
     <table class="table table-bordered mt-3">
         <thead class="thead-dark">
             <tr>
@@ -35,31 +38,31 @@
                 <td>{{ marca.slogan }}</td>
                 <td>{{ marca.productosDestacados }}</td>
                 <td>
-                    <a  [routerLink]="['/actualizarmarca', marca._id]"  class="btn btn-sm btn-primary">
-                        <i class="bi bi-pencil-square"></i> <!---->
+                    <a [routerLink]="['/actualizarmarca', marca._id]" class="btn btn-sm btn-success">
+                        <i class="bi bi-pencil-square"></i>
                     </a>
                 </td>
                 <td>
-                    <button [routerLink]="['/eliminarmarca', marca._id]"  class="btn btn-sm btn-danger">
-                        <i class="bi bi-trash"></i> <!--  de borrar -->
+                    <button [routerLink]="['/eliminarmarca', marca._id]" class="btn btn-sm btn-danger">
+                        <i class="bi bi-trash"></i>
                     </button>
                 </td>
             </tr>
         </tbody>
     </table>
-    
-    <button routerLink="/nuevaMarca"> Nueva marca</button>
+</div>
 
-    <footer class="footer mt-auto py-3">
-        <div class="container text-center">
-          <p>&copy; 2024 Jonathan Vega | Diseñado con Angular</p>
-          <div class="social-icons">
+<div class="container">
+    <button routerLink="/nuevaMarca" class="btn btn-primary">Nueva marca</button>
+</div>
+
+<footer class="footer mt-auto py-3">
+    <div class="container text-center">
+        <p>&copy; 2024 Jonathan Vega | Diseñado con Angular</p>
+        <div class="social-icons">
             <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
             <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
             <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-           
-          </div>
         </div>
-      </footer>
-
-      
+    </div>
+</footer>

@@ -1,42 +1,115 @@
-<title>Nuevo Proovedor </title>
-<form [formGroup]="proveeForms" (ngSubmit)="agregarProveedor()">
-    <div>
-      <label for="provId">ID del Proveedor</label>
-      <input type="text" formControlName="provId">
-    </div>
-    <div>
-      <label for="nombre">Nombre</label>
-      <input type="text" formControlName="nombre">
-    </div>
-    <div>
-      <label for="direccion">Dirección</label>
-      <input type="text" formControlName="direccion">
-    </div>
-    <div>
-      <label for="correoElectronico">Correo Electrónico</label>
-      <input type="email" formControlName="correoElectronico">
-    </div>
-    <div>
-      <label for="telefono">Teléfono</label>
-      <input type="text" formControlName="telefono">
-    </div>
-    <button type="submit">Agregar Proveedor</button>
-  </form>
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Proveedor</title>
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
 
-            <button routerLink="/catalogoProveedor">Cancelar</button>
+        .container {
+            margin-top: 50px;
+        }
 
-        <footer class="footer mt-auto py-3">
-            <div class="container text-center">
-              <p>&copy; 2024 Jonathan Vega | Diseñado con Angular</p>
-              <div class="social-icons">
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            font-weight: bold;
+        }
+
+        form div {
+            margin-bottom: 15px;
+        }
+
+        form input[type="text"],
+        form input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"],
+        button[routerLink] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover,
+        button[routerLink]:hover {
+            background-color: #0056b3;
+        }
+
+       
+        .social-icons a {
+            color: #fff;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mb-4">Nuevo Proveedor</h2>
+        <form [formGroup]="proveeForms" (ngSubmit)="agregarProveedor()">
+            <div class="form-group">
+                <label for="provId">ID del Proveedor</label>
+                <input type="text" class="form-control" formControlName="provId">
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" formControlName="nombre">
+            </div>
+            <div class="form-group">
+                <label for="direccion">Dirección</label>
+                <input type="text" class="form-control" formControlName="direccion">
+            </div>
+            <div class="form-group">
+                <label for="correoElectronico">Correo Electrónico</label>
+                <input type="email" class="form-control" formControlName="correoElectronico">
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="text" class="form-control" formControlName="telefono">
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar Proveedor</button>
+            <br>
+            <br>
+            <button routerLink="/catalogoProveedor" class="btn btn-success">Cancelar</button>
+        </form>
+    </div>
+
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+            <p>&copy; 2024 Jonathan Vega | Diseñado con Angular</p>
+            <div class="social-icons">
                 <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-               
-              </div>
             </div>
-          </footer>
+        </div>
+    </footer>
 
-          
+    <!-- Bootstrap JS y Popper JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

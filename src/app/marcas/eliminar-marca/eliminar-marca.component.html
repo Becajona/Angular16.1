@@ -1,13 +1,16 @@
-<div>
-    <h2>¿Estás seguro de que deseas eliminar esta marca?</h2>
-  
-    <!-- Puedes agregar más campos según sea necesario -->
-    <!-- <p>Nombre: {{ marca.nombre }}</p> -->
-    <!-- <p>Segmento de mercado: {{ marca.segmentoMercado }}</p> -->
-    <!-- <p>Slogan: {{ marca.slogan }}</p> -->
-    <!-- <p>Productos destacados: {{ marca.productosDestacados }}</p> -->
-    
-    <button (click)="eliminarMarca(marcaId)">Eliminar</button>
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">¿Estás seguro de que deseas eliminar esta marca?</h2>
+      <p class="card-text">Nombre: {{ marca.nombre }}</p>
+      <p class="card-text">Segmento de mercado: {{ marca.segmentoMercado }}</p>
+      <p class="card-text">Slogan: {{ marca.slogan }}</p>
+      <p class="card-text">Productos destacados: {{ marca.productosDestacados }}</p>
+
+      <button class="btn btn-danger" (click)="eliminarMarca(marcaId)">Eliminar</button>
+      <br>
+      <br>
+      <button class="btn btn-secondary" routerLink="/catalogoMarcas">Cancelar</button>
+    </div>
   </div>
-  <button routerLink="/catalogoMarcas">Cancelar</button>
-  
+</div>

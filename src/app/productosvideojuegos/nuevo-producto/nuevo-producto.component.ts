@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class NuevoProductoComponent implements OnInit {
   productosForms: FormGroup;
   miProd: any;
+  imagen1: any;
+
 
   constructor(private fb: FormBuilder,
               private videoJuegosService: VideoJuegosService,
@@ -92,5 +94,20 @@ export class NuevoProductoComponent implements OnInit {
       console.error("El formulario es inválido.");
     }
   }
+
+  convertir_B64(event: any) {
+    
+    if (event.target.files && event.target.files[0])
+    {
+    var file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = e => this.imagen1 =
+    reader.result;
+    reader.readAsDataURL(file);
+    
+    }
+    }
+
+
 
 }

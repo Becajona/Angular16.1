@@ -1,43 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualizar Proveedor</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+
     <div class="container">
         <h2>Actualizar Proveedor</h2>
-        <form action="/update_provider" method="POST">
-            <!-- Campo de ID (oculto) -->
-
-            <!-- Campo de Nombre -->
+        <form [formGroup]="proveedorForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" formControlName="nombre" required>
             </div>
-            <!-- Campo de Dirección -->
+            
             <div class="form-group">
                 <label for="direccion">Dirección:</label>
+                <input type="text" class="form-control" id="direccion" formControlName="direccion" required>
             </div>
-            <!-- Campo de Correo Electrónico -->
+            
             <div class="form-group">
                 <label for="correoElectronico">Correo Electrónico:</label>
+                <input type="email" class="form-control" id="correoElectronico" formControlName="correoElectronico" required>
             </div>
-            <!-- Campo de Teléfono -->
+
             <div class="form-group">
                 <label for="telefono">Teléfono:</label>
+                <input type="text" class="form-control" id="telefono" formControlName="telefono" required>
             </div>
-            <!-- <input type="hidden" name="provider_id" value="{{ listaProveedor[0]._id["$oid"] }}">
- -->
+            <br>
+
             <button type="submit" class="btn btn-primary">Actualizar Proveedor</button>
         </form>
     </div>
 
-    <!-- Bootstrap JS (jQuery necesario) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+<br>
+<button routerLink="/catalogoProveedor">Cancelar</button>

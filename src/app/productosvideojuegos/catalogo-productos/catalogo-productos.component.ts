@@ -4,7 +4,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { FormsModule,FormControl ,Validators, FormGroup } from '@angular/forms';
 
-// Importa el servicio correcto
+
 import { VideoJuegosService } from 'src/app/servicios/video-juegos.service';
 import { VideoJuego } from '../../modelos/video-juegos/apis-jon.interface';
 
@@ -17,8 +17,8 @@ export class CatalogoProductosComponent implements OnInit {
 
 
   listaProductos: VideoJuego[] = [];
-  page: number = 1; // Inicializa la página en 1
-  itemsPerPage: number = 10; // Número de productos por página
+  page: number = 1; 
+  itemsPerPage: number = 10; 
   miProd: VideoJuego = {
     nombre: '',
     categoria: '',
@@ -70,7 +70,7 @@ export class CatalogoProductosComponent implements OnInit {
     this.videojuegoService.guardarProducto(this.miProd).subscribe(data => {
       console.log("PRODUCTO", data);
       if (data) {
-        this.obtenerProductos(); // Actualizar lista de productos
+        this.obtenerProductos(); 
         this.router.navigateByUrl('/prodCatalogo');
       } else {
         console.log("error");
@@ -78,13 +78,6 @@ export class CatalogoProductosComponent implements OnInit {
     });
   }
 
-
-
-  actualizarProducto(id: string) {
-    // Aquí debes implementar la lógica para obtener los datos del producto por su ID y redirigir a la página de actualización
-    // Por ejemplo:
-    // this.router.navigateByUrl(`/actualizar-producto/${id}`);
-  }
 
   previousPage() {
     if (this.page > 1) {

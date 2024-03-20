@@ -1,13 +1,10 @@
-<div>
-    <h2>¿Estás seguro de que deseas eliminar este proveedor?</h2>
 
-    <!-- Puedes agregar más campos según sea necesario 
-        <p>Nombre: {{ listaproovedor.nombre }}</p>
-    <p>Dirección: {{ proveedor.direccion }}</p>
-    <p>Correo Electrónico: {{ proveedor.correoElectronico }}</p>
-    <p>Teléfono: {{ proveedor.telefono }}</p>
-    -->
-    <button (click)="eliminarProveedor(provId)">Eliminar</button>
-  </div>
-  <button routerLink="/catalogoProveedor">Cancelar</button>
-  
+    <title>Confirmar Eliminación de Proveedor</title>
+
+    <div class="container mt-5">
+        <div class="confirm-delete-container">
+            <h2>¿Estás seguro de que deseas eliminar este proveedor?</h2>
+            <button class="btn btn-danger" (click)="eliminarProveedor(provId)">Eliminar</button>
+        </div>
+        <button class="btn btn-primary" routerLink="/catalogoProveedor">Cancelar</button>
+    </div>

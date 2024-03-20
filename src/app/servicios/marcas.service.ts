@@ -36,6 +36,24 @@ export class MarcasService {
     );
   }
 
+  actualizarMarcaPorId(id: string, proveedor: any): Observable<any> {
+    const url = `${this.apiUrl}/actualizar/${id}`;
+    return this.http.put<any>(url, proveedor).pipe(
+      tap((res: any) => {
+        console.log('Proveedor actualizado correctamente');
+      }),
+      catchError(err => {
+        console.error('Error al actualizar proveedor:', err);
+        return throwError(err);
+      })
+    );
+  }
+  obtenerMarcaPorId(id: string): Observable<any> {
+    const url = `${this.apiUrl}/porID/${id}`;
+    return this.http.get<any>(url);
+  }
+  
+
 
   // Método para eliminar una marca por su ID
   eliminarMarca(id: string): Observable<any> {

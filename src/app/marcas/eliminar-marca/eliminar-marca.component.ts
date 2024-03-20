@@ -10,6 +10,7 @@ import { MarcasService } from 'src/app/servicios/marcas.service';
 export class EliminarMarcaComponent implements OnInit {
   marcaId: string | null = null;
   messageErr: any;
+marca: any;
 
   constructor(
     private router: Router,
