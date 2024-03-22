@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EliminarComponent } from './eliminar/eliminar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Importa FormsModule y ReactiveFormsModule aquí
+import { RouterModule } from '@angular/router';
+
 import { EliminarEmpleadoComponent } from './eliminar-empleado/eliminar-empleado.component';
 import { ActualizarEmpleadoComponent } from './actualizar-empleado/actualizar-empleado.component';
 import { CatalogoEmpleadoComponent } from './catalogo-empleado/catalogo-empleado.component';
@@ -10,14 +12,16 @@ import { NuevoEmpleadoComponent } from './nuevo-empleado/nuevo-empleado.componen
 
 @NgModule({
   declarations: [
-    EliminarComponent,
-    EliminarEmpleadoComponent,
-    ActualizarEmpleadoComponent,
     CatalogoEmpleadoComponent,
-    NuevoEmpleadoComponent
+    NuevoEmpleadoComponent,
+    EliminarEmpleadoComponent,
+    ActualizarEmpleadoComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
   ]
 })
 export class EmpleadosModule { }

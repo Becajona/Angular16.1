@@ -1,84 +1,71 @@
-
 <div class="container">
   <h1>Nuevo Producto</h1>
-  <form [formGroup]="productosForms" (ngSubmit)="agregarProducto()">
+  <form [formGroup]="productosForms" (ngSubmit)="enviarProd()">
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" id="nombre" formControlName="nombre" 
-            placeholder="Ingrese el nombre del producto">
-            <div class="alert alert-danger mt-2" >
-              El campo es obligatorio
-            </div>
-          </div>
-          
+          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control" id="nombre" formControlName="nombre" [(ngModel)]="miProd.nombre" placeholder="Ingrese el nombre del producto">
+         
         </div>
         <div class="form-group">
           <label for="categoria">Categoría</label>
-          <input type="text" class="form-control" id="categoria" formControlName="categoria" placeholder="Ingrese la categoría del producto">
+          <input type="text" class="form-control" id="categoria" formControlName="categoria" [(ngModel)]="miProd.categoria" placeholder="Ingrese la categoría del producto">
         </div>
         <div class="form-group">
           <label for="marcasId">Marcas ID</label>
-          <input type="text" class="form-control" id="marcasId" formControlName="marcasId" placeholder="Ingrese el ID de las marcas del producto">
+          <input type="text" class="form-control" id="marcasId" formControlName="marcasId" [(ngModel)]="miProd.marcasId" placeholder="Ingrese el ID de las marcas del producto">
         </div>
         <div class="form-group">
           <label for="version">Versión</label>
-          <input type="text" class="form-control" id="version" formControlName="version" placeholder="Ingrese la versión del producto">
+          <input type="text" class="form-control" id="version" formControlName="version" [(ngModel)]="miProd.version" placeholder="Ingrese la versión del producto">
         </div>
         <div class="form-group">
           <label for="idiomas">Idiomas</label>
-          <input type="text" class="form-control" id="idiomas" formControlName="idiomas" placeholder="Ingrese los idiomas del producto">
+          <input type="text" class="form-control" id="idiomas" formControlName="idiomas" [(ngModel)]="miProd.idiomas" placeholder="Ingrese los idiomas del producto">
         </div>
         <div class="form-group">
-          <label for="jugadores">estado</label>
-          <input type="text" class="form-control" id="estado" formControlName="estado" placeholder="Estado">
+          <label for="estado">Estado</label>
+          <input type="text" class="form-control" id="estado" formControlName="estado" [(ngModel)]="miProd.estado" placeholder="Ingrese el estado del producto">
         </div>
-        
+        <div class="form-group">
+          <label for="jugadores">Jugadores</label>
+          <input type="number" class="form-control" id="jugadores" formControlName="jugadores" [(ngModel)]="miProd.jugadores" placeholder="Ingrese el número de jugadores">
+        </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="jugadores">Jugadores</label>
-          <input type="number" class="form-control" id="jugadores" formControlName="jugadores" placeholder="Ingrese el número de jugadores">
-        </div>
-        <div class="form-group">
           <label for="descripcion">Descripción</label>
-          <textarea class="form-control" id="descripcion" formControlName="descripcion" rows="3" placeholder="Ingrese la descripción del producto"></textarea>
+          <textarea class="form-control" id="descripcion" formControlName="descripcion" [(ngModel)]="miProd.descripcion" rows="3" placeholder="Ingrese la descripción del producto"></textarea>
         </div>
         <div class="form-group">
           <label for="costo">Costo</label>
-          <input type="number" class="form-control" id="costo" formControlName="costo" placeholder="Ingrese el costo del producto">
+          <input type="number" class="form-control" id="costo" formControlName="costo" [(ngModel)]="miProd.costo" placeholder="Ingrese el costo del producto">
         </div>
         <div class="form-group">
           <label for="precio">Precio</label>
-          <input type="number" class="form-control" id="precio" formControlName="precio" placeholder="Ingrese el precio del producto">
+          <input type="number" class="form-control" id="precio" formControlName="precio" [(ngModel)]="miProd.precio" placeholder="Ingrese el precio del producto">
         </div>
         <div class="form-group">
           <label for="foto">Foto</label>
-          <input type="file" class="form-control" id="foto" formControlName="foto" accept="image/*" (change)="convertir_B64($event)" required><!--(change)="convertir_B64($event)"-->
+          <input type="file" class="form-control" id="foto" formControlName="foto" accept="image/*" (change)="convertir_B64($event)" required>
         </div>
         <div class="form-group">
           <label for="cantidadExistente">Cantidad Existente</label>
-          <input type="number" class="form-control" id="cantidadExistente" formControlName="cantidadExistente" placeholder="Ingrese la cantidad existente del producto">
+          <input type="number" class="form-control" id="cantidadExistente" formControlName="cantidadExistente" [(ngModel)]="miProd.cantidadExistente" placeholder="Ingrese la cantidad existente del producto">
         </div>
         <div class="form-group">
           <label for="origen">Origen</label>
-          <input type="text" class="form-control" id="origen" formControlName="origen" placeholder="Ingrese el origen del producto" required>
+          <input type="text" class="form-control" id="origen" formControlName="origen" [(ngModel)]="miProd.origen" placeholder="Ingrese el origen del producto" required>
         </div>
-
-
         <div class="form-group">
           <label for="provId">Proveedor ID</label>
-          <select class="form-control" id="provId" formControlName="provId" required>
+          <select #provIdControl class="form-control" (change)="get_id_proveedor(provIdControl.value)" id="provId" formControlName="provId" required>
             <option value="">Selecciona un proveedor</option>
             <!-- Itera sobre los proveedores disponibles y crea opciones para cada uno -->
-            <option *ngFor="let proveedor of proveedores" [value]="proveedor.provId">{{ proveedor.nombre }}</option>
+            <option *ngFor="let proveedor of listaprovedores" [value]="proveedor._id">{{ proveedor.nombre }}</option>
           </select>
         </div>
-        
-
-        
       </div>
     </div>
     <br>
@@ -88,6 +75,3 @@
 <br>
 
 <button routerLink="/productosCatalogos" class="btn btn-secondary">Cancelar</button>
-
-
-

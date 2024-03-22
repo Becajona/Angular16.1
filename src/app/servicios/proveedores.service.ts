@@ -3,8 +3,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Proveedores } from '../modelos/video-juegos/proveedores.interface';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @Injectable({
@@ -54,6 +53,8 @@ export class ProveedoresService {
       })
     );
   }
+
+
   obtenerProveedorPorId(id: string): Observable<any> {
     const url = `${this.apiUrl}/porID/${id}`;
     return this.http.get<any>(url);

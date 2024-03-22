@@ -1,1 +1,51 @@
-<p>catalogo-usuario works!</p>
+<div class="container mt-5">
+    <h1>Catálogo Usuarios</h1>
+</div>
+
+<br>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <p>ID: {{ listaUsuarios[0]._id}}</p>
+            <p>Email: {{ listaUsuarios[0].email }}</p>
+            <p>Password: {{ listaUsuarios[0].password }}</p>
+            <p>Rol: {{ listaUsuarios[0].rol }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Rol</th>
+                <th>Actualizar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of listaUsuarios">
+                <td>{{usuario._id}}</td>
+                <td>{{usuario.email}}</td>
+                <td>{{ usuario.password}}</td>
+                <td>{{ usuario.rol}}</td>
+                <td>
+                    <a [routerLink]="['/eliminarusuario', usuario._id]" class="btn btn-sm btn-danger">
+                        eliminar
+                    </a>
+                </td>
+                <td>
+                    <a [routerLink]="['/actualizarusuario', usuario._id]" class="btn btn-sm btn-primary">
+                        <i class="bi bi-pencil-square"></i> Actualizar
+                    </a>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+

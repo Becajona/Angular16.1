@@ -12,7 +12,7 @@ import { ActualizarProovedorComponent } from './actualizar-proovedor/actualizar-
 @NgModule({
   declarations: [
     CatalogoProveedorComponent,
-    NuevoProveedorComponent, // Agrega el componente NuevoProveedorComponent aquí
+    NuevoProveedorComponent, 
     EliminarProovedorComponent,
     ActualizarProovedorComponent,
   ],

@@ -4,6 +4,7 @@ import { Marca } from '../modelos/video-juegos/marcas.interface';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +23,7 @@ export class MarcasService {
     );
   }
   
+
   //nueva POST
   guardarMarca(marca: any): Observable<any> {
     const url = `${this.apiUrl}/nuevamarca`;

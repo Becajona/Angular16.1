@@ -13,7 +13,8 @@ import { ProductosvideojuegosModule } from './productosvideojuegos/productosvide
 import { VideoJuegosService } from './servicios/video-juegos.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MarcasModule } from './marcas/marcas.module';
-
+import { UsuariosModule } from './usuarios/usuarios.module';
+import { EmpleadosModule } from './empleados/empleados.module';
 
 
 @NgModule({
@@ -29,6 +30,8 @@ import { MarcasModule } from './marcas/marcas.module';
     FormsModule,
     ProductosvideojuegosModule,
     MarcasModule,
+    UsuariosModule,
+    EmpleadosModule,
     CommonModule,
     ReactiveFormsModule,
     NgxPaginationModule,

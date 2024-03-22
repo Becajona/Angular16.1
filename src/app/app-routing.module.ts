@@ -42,6 +42,7 @@ import { EliminarEmpleadoComponent } from './empleados/eliminar-empleado/elimina
 import { CatalogoEmpleadoComponent } from './empleados/catalogo-empleado/catalogo-empleado.component';
 
 //usuarios
+import { UsuariosModule } from './usuarios/usuarios.module';
 import { CatalogoUsuarioComponent } from './usuarios/catalogo-usuario/catalogo-usuario.component';
 import { EliminarUsuarioComponent } from './usuarios/eliminar-usuario/eliminar-usuario.component';
 import { ActualizarUsuarioComponent } from './usuarios/actualizar-usuario/actualizar-usuario.component';
@@ -65,6 +66,10 @@ const routes: Routes = [
         path:'proveedor',
         component: ProveedoresModule
         },
+        {
+          path:'usuarios',
+          component: UsuariosModule
+          },
         {
           path:'login',
           component: LoginComponent
@@ -114,11 +119,11 @@ const routes: Routes = [
                                 component: ActualizarMarcaComponent
                                 }, 
                                 {
-                                  path:'catalogoEmpleado',
+                                  path:'catalogoempleado',
                                   component: CatalogoEmpleadoComponent
                                   },
                                   {
-                                    path:'actualizarempleado',
+                                    path:'actualizarempleado/:id',
                                     component: ActualizarEmpleadoComponent
                                     },
                                     {
@@ -129,6 +134,23 @@ const routes: Routes = [
                                         path:'nuevousuario',
                                         component: NuevoUsuarioComponent
                                         },
+                                        {
+                                          path:'nuevoempleado',
+                                          component: NuevoEmpleadoComponent
+                                          },
+                                          {
+                                            path:'actualizarusuario/:id',
+                                            component: ActualizarUsuarioComponent
+                                            },
+                                            {
+                                              path:'eliminarusuario/:id',
+                                              component: EliminarUsuarioComponent
+                                              },
+                                              {
+                                                path:'eliminarempleado/:id',
+                                                component: EliminarEmpleadoComponent
+                                                },
+                                            
                                 
 ];
 

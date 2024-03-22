@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col">
             <p>ID: {{ listaEmpleados[0]._id}}</p>
-            <p>Nombre: {{ listaEmpleados[0].nombre }}</p>
+            <p>nombre {{listaEmpleados[0].nombre}}</p>
             <p>Edad: {{ listaEmpleados[0].edad }}</p>
             <p>Género: {{ listaEmpleados[0].genero }}</p>
             <p>Salario: {{ listaEmpleados[0].salario }}</p>
@@ -15,8 +15,8 @@
     </div>
 </div>
 
-<div class="container">
-    <table class="table table-bordered mt-3">
+<div class="container mt-3">
+    <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
                 <th>ID</th>
@@ -38,27 +38,24 @@
                 <td>{{ empleado.salario }}</td>
                 <td>{{ empleado.telefono }}</td>
                 <td>
-                    
+                    <a [routerLink]="['/actualizarempleado', empleado._id]" class="btn btn-sm btn-success">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
                 </td>
                 <td>
-                    
+                    <button [routerLink]="['/eliminarempleado', empleado._id]" class="btn btn-sm btn-danger">
+                        <i class="bi bi-trash"></i>
+                    </button>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
 
-<div class="container">
-    <button routerLink="/nuevoEmpleado" class="btn btn-primary">Nuevo empleado</button>
+<div class="container mt-3">
+    <button routerLink="/nuevoempleado" class="btn btn-primary">Nuevo Empleado</button>
 </div>
 
-<footer class="footer mt-auto py-3">
-    <div class="container text-center">
-        <p>&copy; 2024 Jonathan Vega | Diseñado con Angular</p>
-        <div class="social-icons">
-            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-    </div>
-</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -1,1 +1,10 @@
-<p>eliminar-usuario works!</p>
+
+    <title>Confirmar Eliminación de Usuario</title>
+    <div class="container mt-5">
+        <div class="confirm-delete-container">
+            <h2>¿Estás seguro de que deseas eliminar este usuario?</h2>
+            <button class="btn btn-danger" (click)="eliminarUsuario(usuarioId)">Eliminar</button>
+        </div>
+        <button class="btn btn-primary" routerLink="/catalogousuario">Cancelar</button>
+    </div>
+

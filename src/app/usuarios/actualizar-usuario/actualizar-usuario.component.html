@@ -1,1 +1,27 @@
-<p>actualizar-usuario works!</p>
+<div class="container">
+    <h2>Actualizar Usuario</h2>
+    <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" formControlName="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" class="form-control" id="password" formControlName="password" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="rol">Rol:</label>
+            <input type="text" class="form-control" id="rol" formControlName="rol" required>
+        </div>
+
+        <br>
+
+        <button type="submit" class="btn btn-primary">Actualizar Usuario</button>
+    </form>
+</div>
+
+<br>
+
+<button routerLink="/catalogousuario" class="btn btn-secondary">Cancelar</button>

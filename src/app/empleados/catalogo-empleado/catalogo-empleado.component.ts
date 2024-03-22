@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmpleadoService } from 'src/app/servicios/empleado.service'; // Importa tu servicio de empleados
+import { EmpleadoService } from 'src/app/servicios/empleado.service';
 import { Empleados } from 'src/app/modelos/video-juegos/empleados.interface';
 
 @Component({
@@ -8,20 +8,18 @@ import { Empleados } from 'src/app/modelos/video-juegos/empleados.interface';
   styleUrls: ['./catalogo-empleado.component.css']
 })
 export class CatalogoEmpleadoComponent implements OnInit {
-  listaEmpleados: Empleados[] = []; // Arreglo para almacenar la lista de empleados
+  listaEmpleados: Empleados[] = []; 
 
-  constructor(public empleadoService: EmpleadoService) { }
+  constructor(private empleadoService: EmpleadoService) { }
 
   ngOnInit(): void {
-    // Al inicializar el componente, llamamos al método para obtener todos los empleados
-    this.obtenerTodosLosEmpleados();
+    this.obtenerEmpleados();
   }
 
-  // Función para obtener todos los empleados
-  obtenerTodosLosEmpleados(): void {
-    this.empleadoService.obtenerTodosLosEmpleados().subscribe((data: Empleados[]) => {
-      console.log(data); // Mostrar los datos obtenidos en la consola (opcional)
-      this.listaEmpleados = data; // Asignar los empleados obtenidos al arreglo listaEmpleados
+  obtenerEmpleados(): void {
+    this.empleadoService.obtenerTodosLosEmpleados().subscribe(data => {
+      console.log(data);
+      this.listaEmpleados = data;
     });
   }
 }
