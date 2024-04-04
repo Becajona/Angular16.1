@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ProveedoresService } from 'src/app/servicios/proveedores.service';
-import { Proveedores } from '../../modelos/video-juegos/proveedores.interface'; // Ajusta la ruta según tu estructura de archivos
+import { Proveedores } from '../../modelos/video-juegos/proveedores.interface'; 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -46,7 +46,7 @@ export class ActualizarProovedorComponent implements OnInit {
       const proveedor = this.proveedorForm.value;
       this.proveedoresService.actualizarProveedorPorId(this.provId, proveedor).subscribe(response => {
         console.log('Proveedor actualizado:', response);
-        // Aquí puedes redirigir a la página de detalle del proveedor actualizado
+        
       });
     } else {
       console.error("El formulario es inválido o el ID del proveedor es nulo.");

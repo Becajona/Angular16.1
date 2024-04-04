@@ -7,7 +7,7 @@ import { Observable, of, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class EmpleadoService {
-  private apiUrl = 'http://192.168.1.67:4000/api/v1/empleados'; 
+  private apiUrl = 'http://192.168.1.72:4000/api/v1/empleados'; 
 
   constructor(private http: HttpClient) { }
 
@@ -41,24 +41,24 @@ export class EmpleadoService {
       tap(() => console.log('Empleado actualizado correctamente')), 
       catchError(err => { // Manejo de errores
         console.error('Error al actualizar empleado:', err);
-        return throwError(err); // Lanzar el error para que sea manejado por el componente que consuma este servicio
+        return throwError(err); 
       })
     );
   }
   
   // Función para obtener un empleado por su ID
   obtenerEmpleadoPorId(id: string): Observable<any> {
-    const url = `${this.apiUrl}/porID/${id}`; // URL completa para obtener un empleado por su ID
+    const url = `${this.apiUrl}/porID/${id}`; 
     return this.http.get<any>(url);
   }
 
   eliminarEmpleado(id: string): Observable<any> {
-    const url = `${this.apiUrl}/eliminar/${id}`; // URL completa para eliminar un empleado
+    const url = `${this.apiUrl}/eliminar/${id}`; 
     return this.http.delete(url).pipe(
-      tap(() => console.log('Empleado eliminado correctamente')), // Mostrar mensaje en consola si se elimina correctamente
-      catchError(err => { // Manejo de errores
+      tap(() => console.log('Empleado eliminado correctamente')), 
+      catchError(err => { 
         console.error('Error al eliminar empleado:', err);
-        return throwError(err); // Lanzar el error para que sea manejado por el componente que consuma este servicio
+        return throwError(err); 
       })
     );
   }

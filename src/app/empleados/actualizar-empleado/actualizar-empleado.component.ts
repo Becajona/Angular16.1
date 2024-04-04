@@ -36,7 +36,7 @@ export class ActualizarEmpleadoComponent implements OnInit {
       const empleado = this.empleadoForm.value;
       this.EmpleadoService.actualizarEmpleadoPorId(this.empleadoId, empleado).subscribe(response => {
         console.log('Empleado actualizado:', response);
-        this.router.navigate(['/catalogoempleado']); // Redirige al catálogo de empleados
+        this.router.navigate(['/catalogoempleado']); 
       });
     } else {
       console.error("El formulario es inválido o el ID del empleado es nulo.");

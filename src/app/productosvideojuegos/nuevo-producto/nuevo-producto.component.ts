@@ -2,14 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { VideoJuegosService } from 'src/app/servicios/video-juegos.service';
-import { VideoJuego } from 'src/app/modelos/video-juegos/apis-jon.interface';
 import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 
-// Proveedores
+// Importa el servicio de proveedores
 import { ProveedoresService } from 'src/app/servicios/proveedores.service';
-import { Proveedores } from 'src/app/modelos/video-juegos/proveedores.interface';
 
 @Component({
   selector: 'app-nuevo-producto',
@@ -17,43 +14,37 @@ import { Proveedores } from 'src/app/modelos/video-juegos/proveedores.interface'
   styleUrls: ['./nuevo-producto.component.css']
 })
 export class NuevoProductoComponent implements OnInit {
-  listaprovedores: Proveedores[] = [];
-  productosForms!: FormGroup; // Inicialización opcional
-  miProd: VideoJuego = {
-    _id: '',
-    nombre: '',
-    categoria: '',
-    marcasId: '',
-    version: '',
-    idiomas: '',
-    jugadores: 0,
-    descripcion: '',
-    costo: 0,
-    precio: 0,
-    foto: '',
-    cantidadExistente: 0,
-    estado: '',
-    origen: '',
-    provId: ''
-  };
+  listaprovedores: any[] = []; // Cambia el tipo a any[]
+  productosForms!: FormGroup;
   imagen1: any;
-  proveedores: Proveedores[] = [];
+  miProd: any; // Remueve la inicialización del objeto miProd
 
   constructor(private proveedoresService: ProveedoresService,
-    private videoJuegosService: VideoJuegosService,
     private fb: FormBuilder,
     private router: Router,
     private http: HttpClient) { }
 
   ngOnInit() {
-    this.proveedoresService.obtenerTodosLosProveedores()
-      .subscribe(data => {
-        console.log(data)
-        this.listaprovedores = data;
-      });
-      
+    this.proveedoresService.obtenerTodosLosProveedores().subscribe(data => {
+      this.listaprovedores = data;
+      this.inicializarFormulario();
+    });
+  }
+
+  inicializarFormulario() {
     this.productosForms = this.fb.group({
-      // Define los campos del formulario aquí
+        nombre: ['', Validators.required],
+        categoria: ['', Validators.required],
+        marcasId: ['', Validators.required],
+        precio: ['', Validators.required],
+        idiomas: ['', Validators.required],
+        jugadores: ['', Validators.required],
+        descripcion: ['', Validators.required], 
+        costo: ['', Validators.required], 
+        foto: ['', Validators.required], 
+        cantidadExistente: ['', Validators.required], 
+        provId: ['', Validators.required], 
+        fechaAdq: ['', Validators.required] 
     });
   }
 
@@ -71,10 +62,10 @@ export class NuevoProductoComponent implements OnInit {
     }
   }
 
-  new_product(miProd: VideoJuego): Observable<any> {
+  new_product(miProd: any): Observable<any> {
     const headers = { 'Content-Type': 'application/json' };
 
-    return this.http.post<any>('http://192.168.1.67:4000/api/v1/productos/nuevoProd', miProd, { headers })
+    return this.http.post<any>('http://192.168.1.72:4000/api/v1/productos/nuevoProd', miProd, { headers })
       .pipe(
         tap((res: any) => {
           if (res.message == "producto insertado") {
@@ -86,15 +77,24 @@ export class NuevoProductoComponent implements OnInit {
   }
 
   enviarProd() {
-    this.miProd.costo = Number(this.miProd.costo)
-    this.miProd.foto = this.imagen1;
-    console.log(this.miProd);
+    // Asignar los valores del formulario al objeto miProd
+    this.miProd = this.productosForms.value;
+
+    // Asegúrate de que los campos numéricos sean convertidos a number antes de enviar
+    this.miProd.jugadores = Number(this.miProd.jugadores);
+    this.miProd.costo = Number(this.miProd.costo);
+    this.miProd.cantidadExistente = Number(this.miProd.cantidadExistente);
+    this.miProd.precio = Number(this.miProd.precio);
+    
+    // Luego puedes continuar con el resto del código para enviar los datos al servidor...
+    console.log("Datos a enviar al servidor:", this.miProd);
 
     this.new_product(this.miProd)
       .subscribe(data => {
         console.log("PRODUCTO", data);
         if (data) {
-          this.router.navigateByUrl('/prodCatalogo');
+          alert("Producto agregado correctamente");
+          this.router.navigateByUrl('/productosCatalogos');
         } else {
           console.log("error");
         }

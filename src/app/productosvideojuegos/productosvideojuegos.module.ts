@@ -7,7 +7,7 @@ import { NuevoProductoComponent } from './nuevo-producto/nuevo-producto.componen
 import { CatalogoProductosComponent } from './catalogo-productos/catalogo-productos.component';
 import { EliminarComponent } from './eliminar/eliminar.component';
 import { ActualizarProductoComponent } from './actualizar-producto/actualizar-producto.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,6 +22,7 @@ import { ActualizarProductoComponent } from './actualizar-producto/actualizar-pr
     FormsModule, 
     RouterModule, 
     ReactiveFormsModule,
+    HttpClientModule
   ]
 })
 export class ProductosvideojuegosModule { }

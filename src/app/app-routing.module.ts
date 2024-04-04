@@ -4,13 +4,28 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { ProductosvideojuegosModule } from './productosvideojuegos/productosvideojuegos.module';
 import { LoginComponent } from './navegacion/login/login.component';
 import { CrearCuentaComponent } from './navegacion/crear-cuenta/crear-cuenta.component';
+//Departamentos
+import { CatalogoDepartamentosComponent } from './departamentos/catalogo-departamentos/catalogo-departamentos.component';
+import { ActualizarDepartamentosComponent } from './departamentos/actualizar-departamentos/actualizar-departamentos.component';
+import { NuevoDepartamentosComponent } from './departamentos/nuevo-departamentos/nuevo-departamentos.component';
+import { EliminarDepartamentoComponent } from './departamentos/eliminar-departamentos/eliminar-departamentos.component';
+
+//Clientes
+import { CatalogoClientesComponent } from './clientes/catalogo-clientes/catalogo-clientes.component';
+import { EliminarClientesComponent } from './clientes/eliminar-clientes/eliminar-clientes.component';
+import { ActualizarClientesComponent } from './clientes/actualizar-clientes/actualizar-clientes.component';
+import { NuevoClientesComponent } from './clientes/nuevo-clientes/nuevo-clientes.component';
+
+//Carrito
+import { CatalogoCarritoComponent } from './carrito/catalogo-carrito/catalogo-carrito.component';
+import { EliminarCarritoComponent } from './carrito/eliminar-carrito/eliminar-carrito.component';
+import { ActualizarCarritoComponent } from './carrito/actualizar-carrito/actualizar-carrito.component';
+import { NuevoCarritoComponent } from './carrito/nuevo-carrito/nuevo-carrito.component';
 
 
 import { VideoJuegosService } from './servicios/video-juegos.service';
 
 //marcas
-import { MarcasService } from './servicios/marcas.service';
-
 import { CatalogoMarcasComponent } from './marcas/catalogo-marcas/catalogo-marcas.component';
 import { NuevaMarcaComponent } from './marcas/nueva-marca/nueva-marca.component';
 import { ActualizarMarcaComponent } from './marcas/actualizar-marca/actualizar-marca.component';
@@ -150,7 +165,57 @@ const routes: Routes = [
                                                 path:'eliminarempleado/:id',
                                                 component: EliminarEmpleadoComponent
                                                 },
-                                            
+                                            //Departamentos
+                                                {
+                                                  path:'eliminardepartamentos/:id',
+                                                  component: EliminarDepartamentoComponent
+                                                  },
+                                                  {
+                                                    path:'actualizardepartamentos/:id',
+                                                    component: ActualizarDepartamentosComponent
+                                                    },
+                                                    {
+                                                      path:'catalogodepartamentos',
+                                                      component: CatalogoDepartamentosComponent
+                                                      },
+                                                      {
+                                                        path:'nuevodepartamentos',
+                                                        component: NuevoDepartamentosComponent
+                                                        },
+                                                 //Clientes
+                                                        {
+                                                          path:'eliminarclientes/:id',
+                                                          component: EliminarClientesComponent
+                                                          },
+                                                          {
+                                                            path:'actualizarclientes/:id',
+                                                            component: ActualizarClientesComponent
+                                                            },
+                                                            {
+                                                              path:'catalogoclientes',
+                                                              component: CatalogoClientesComponent
+                                                              },
+                                                              {
+                                                                path:'nuevoclientes',
+                                                                component: NuevoClientesComponent
+                                                                },
+                                                        //Carrito
+                                                                {
+                                                                  path:'eliminarcarrito/:id',
+                                                                  component: EliminarCarritoComponent
+                                                                  },
+                                                                  {
+                                                                    path:'actualizarcarrito/:id',
+                                                                    component: ActualizarCarritoComponent
+                                                                    },
+                                                                    {
+                                                                      path:'catalogocarrito',
+                                                                      component: CatalogoCarritoComponent
+                                                                      },
+                                                                      {
+                                                                        path:'nuevocarrito',
+                                                                        component: NuevoCarritoComponent
+                                                                        },
                                 
 ];
 

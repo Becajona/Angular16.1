@@ -32,17 +32,6 @@
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Usuario
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Catálogos</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" routerLink="nuevoProveedor">Nuevo Usuario</a></li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Productos
             </a>
             <ul class="dropdown-menu">
@@ -99,6 +88,40 @@
               <li><a class="dropdown-item" routerLink="/nuevaMarca">Nuevo Marca</a></li>
             </ul>
           </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Departamentos
+            </a>
+            <ul class="dropdown-menu"> 
+              <li><a class="dropdown-item" routerLink="/catalogodepartamentos">Catálogos</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLink="/nuevodepartamentos">Nuevo Departamentos</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Clientes
+            </a>
+            <ul class="dropdown-menu"> 
+              <li><a class="dropdown-item" routerLink="/catalogoclientes">Catálogos</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLink="/nuevoclientes">Nuevo Cliente</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Carrito
+            </a>
+            <ul class="dropdown-menu"> 
+              <li><a class="dropdown-item" routerLink="/catalogocarrito">Catálogos</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLink="/nuevocarrito">Nuevo Carrito</a></li>
+            </ul>
+          </li>
+
         </ul>
           <button class="btn btn-outline-success"  routerLink="crearCuenta" type="submit">Crear cuenta</button>
           <button class="btn btn-outline-success" routerLink="login" type="submit">Login</button>

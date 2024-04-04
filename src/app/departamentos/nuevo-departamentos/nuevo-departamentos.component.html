@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <h1>Crear Nuevo Departamento</h1>
+    <form [formGroup]="departamentoForm" (ngSubmit)="agregarDepartamento()">
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <input type="text" class="form-control" id="descripcion" formControlName="descripcion" required>
+      </div>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" formControlName="nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="responsable">Responsable</label>
+        <input type="text" class="form-control" id="responsable" formControlName="responsable" required>
+      </div>
+      <div class="form-group">
+        <label for="ubicacion">Ubicación</label>
+        <input type="text" class="form-control" id="ubicacion" formControlName="ubicacion" required>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">Crear Departamento</button>
+    </form>
+  </div>
+  <br>
+  <button type="button" class="btn btn-lg btn-primary" routerLink="/catalogodepartamentos">Regresar a catálogo</button>

@@ -15,7 +15,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MarcasModule } from './marcas/marcas.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { EmpleadosModule } from './empleados/empleados.module';
-
+import { ClientesModule } from './clientes/clientes.module';
+import { DepartamentosModule } from './departamentos/departamentos.module';
+import { CarritoService } from './servicios/carrito.service';
+import { CarritoModule } from './carrito/carrito.module';
 
 @NgModule({
   declarations: [
@@ -30,8 +33,10 @@ import { EmpleadosModule } from './empleados/empleados.module';
     FormsModule,
     ProductosvideojuegosModule,
     MarcasModule,
+    CarritoModule,
     UsuariosModule,
     EmpleadosModule,
+    ClientesModule,
     CommonModule,
     ReactiveFormsModule,
     NgxPaginationModule,

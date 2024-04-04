@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Observable, of, throwError } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { Observable, of, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class VideoJuegosService {
-  private apiUrl = 'http://192.168.1.67:4000/api/v1/productos';
+  private apiUrl = 'http://192.168.1.72:4000/api/v1/productos';
 
   constructor(private http: HttpClient) { }
 
@@ -26,17 +26,18 @@ export class VideoJuegosService {
   //nuevoProducto
   guardarProducto(producto: any): Observable<any> {
     const url = `${this.apiUrl}/nuevoProd`;
-    return this.http.post<any>(url, producto).pipe(
-      tap((res: any) => {
-        console.log('Producto guardado correctamente');
-      }),
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.post<any>(url, producto, { headers }).pipe(
+      tap(() => console.log('Producto guardado correctamente')),
       catchError(err => {
         console.error('Error al guardar producto:', err);
         return throwError(err);
       })
     );
   }
-  
+
+
   obtenerProductoPorId(id: string): Observable<any> {
     const url = `${this.apiUrl}/porID/${id}`;
     return this.http.get<any>(url);
@@ -47,7 +48,7 @@ export class VideoJuegosService {
   //proveedores Id
 
   obtenerTodosLosProveedores(): Observable<any[]> {
-    // Usa el servicio de proveedores para obtener todos los proveedores
+    
     const proveedoresUrl = 'http://192.168.1.67:4000/api/v1/proveedores/get_all';
     return this.http.get<any[]>(proveedoresUrl).pipe(
       tap(data => console.log('Proveedores obtenidos del servidor:', data)),
@@ -63,18 +64,19 @@ export class VideoJuegosService {
 
 
 //ACTUALIZAR 
-actualizarProductoPorId(id: string, producto: any): Observable<any> {
+actualizarProducto(id: string, producto: any): Observable<any> {
   const url = `${this.apiUrl}/actualizar/${id}`;
-  return this.http.put<any>(url, producto).pipe(
-    tap((res: any) => {
-      console.log('Producto actualizado correctamente');
-    }),
-    catchError(err => {
-      console.error('Error al actualizar producto:', err);
-      return throwError(err);
-    })
-  );
+  return this.http.put(url, producto, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
+    .pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error al actualizar producto:', error);
+        return throwError('Error al actualizar producto. Por favor, inténtalo de nuevo.');
+      })
+    );
 }
+
+
+
 
   
 //ELIMINAR

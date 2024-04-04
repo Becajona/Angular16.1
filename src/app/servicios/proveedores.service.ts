@@ -10,7 +10,7 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProveedoresService {
-  private apiUrl = 'http://192.168.1.67:4000/api/v1/proveedores';
+  private apiUrl = 'http://192.168.1.72:4000/api/v1/proveedores';
   constructor(private http: HttpClient) { }
 
   obtenerTodosLosProveedores(): Observable<any[]> {

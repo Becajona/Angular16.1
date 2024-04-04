@@ -1,0 +1,38 @@
+<div class="container">
+    <h2>Crear Nuevo Carrito</h2>
+    <form (submit)="crearCarrito()">
+
+        <div class="form-group">
+            <label for="producto">Producto:</label>
+            <select class="form-control" id="producto" name="producto" (change)="agregarProducto($event)" [(ngModel)]="selectedProducto">
+                <option value="">Selecciona un producto</option>
+                <option *ngFor="let producto of productos" [value]="producto._id">{{ producto.nombre }}</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="productos agregados">Productos agregados:</label>
+            <ul>
+                <li *ngFor="let producto of selectedProductos; let i = index">{{ producto.nombre }} <button type="button" class="btn btn-danger btn-sm" (click)="eliminarProducto(i)">Eliminar</button></li>
+            </ul>
+        </div>
+        
+
+        <div class="form-group">
+            <label for="fechaCompra">Fecha de Compra:</label>
+            <input type="date" class="form-control" id="fechaCompra" name="fechaCompra" [(ngModel)]="fechaCompra">
+        </div>
+        <div class="form-group">
+            <label for="clienteId">Cliente:</label>
+            <select class="form-control" id="clienteId" name="clienteId" [(ngModel)]="selectedClienteId">
+                <option value="">Selecciona un cliente</option>
+                <option *ngFor="let cliente of clientes" [value]="cliente._id">{{ cliente.nombre }}</option>
+            </select>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Crear Carrito</button>
+    </form>
+</div>
+
+<br>
+<button type="button" class="btn btn-lg btn-primary" routerLink="/catalogocarrito">Regresar a catálogo</button>

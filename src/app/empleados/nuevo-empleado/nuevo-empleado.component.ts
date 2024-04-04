@@ -12,7 +12,7 @@ export class NuevoEmpleadoComponent implements OnInit {
   empleadoForm: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private empleadoService: EmpleadoService, // Ajusta el servicio de empleados
+              private empleadoService: EmpleadoService, 
               private router: Router) {
     this.empleadoForm = this.fb.group({
       nombre: ['', Validators.required],

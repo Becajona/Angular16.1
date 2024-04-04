@@ -1,0 +1,17 @@
+<div class="container mt-5">
+    <h1 class="text-center">Eliminar Carrito</h1>
+  </div>
+  
+  <div class="container mt-3">
+    <div class="alert alert-danger" role="alert">
+      ¿Estás seguro de que quieres eliminar este carrito?
+    </div>
+  
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <button class="btn btn-danger" (click)="carritoId !== null && eliminarCarrito(carritoId)">Eliminar</button>
+
+        <a routerLink="/" class="btn btn-secondary ml-2">Cancelar</a>
+      </div>
+    </div>
+  </div>

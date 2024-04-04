@@ -9,7 +9,7 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class MarcasService {
-  private apiUrl = 'http://192.168.1.67:4000/api/v1/marcas';
+  private apiUrl = 'http://192.168.1.72:4000/api/v1/marcas';
   constructor(private http:HttpClient) { }
 
   obtenerTodosLasMarcas(): Observable<any[]> {
@@ -50,6 +50,7 @@ export class MarcasService {
       })
     );
   }
+  
   obtenerMarcaPorId(id: string): Observable<any> {
     const url = `${this.apiUrl}/porID/${id}`;
     return this.http.get<any>(url);
@@ -59,7 +60,7 @@ export class MarcasService {
 
   // Método para eliminar una marca por su ID
   eliminarMarca(id: string): Observable<any> {
-    const url = `${this.apiUrl}/eliminar/${id}`; // Reemplaza URL_DE_TU_API_PARA_ELIMINAR_MARCA con la URL de tu API
+    const url = `${this.apiUrl}/eliminar/${id}`; 
     return this.http.delete(url).pipe(
       tap((res: any) => {
         console.log('Proveedor eliminado correctamente');

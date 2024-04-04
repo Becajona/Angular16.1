@@ -47,7 +47,7 @@ export class NuevoUsuarioComponent implements OnInit {
       this.usuariosService.guardarUsuario(usuario).subscribe(
         response => {
           console.log('Usuario agregado:', response);
-          // Puedes agregar aquí la lógica de redirección si es necesario
+          
         },
         error => {
           console.error('Error al agregar usuario:', error);

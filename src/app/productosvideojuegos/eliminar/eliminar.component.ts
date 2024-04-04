@@ -26,8 +26,10 @@ export class EliminarComponent implements OnInit {
     if (id) {
       this.servicioProd.eliminarProducto(id).subscribe(
         () => {
+          alert("eliminado correctamente");
           console.log('Producto eliminado correctamente');
-          // Realizar cualquier otra acción después de eliminar el producto
+          this.router.navigateByUrl('/productosCatalogos');
+          
         },
         error => {
           console.error('Error al eliminar el producto:', error);

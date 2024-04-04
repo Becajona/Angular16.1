@@ -15,7 +15,7 @@
     <p>Nombre: {{ listaProductos[0].nombre }}</p>
     <p>Categoría: {{ listaProductos[0].categoria}}</p>
     <p>Marcas ID: {{ listaProductos[0].marcasId }}</p>
-    <p>Versión: {{ listaProductos[0].version }}</p>
+
 
   </div>
   <div class="col">
@@ -23,17 +23,17 @@
     <p>Jugadores: {{ listaProductos[0].jugadores }}</p>
     <p>Descripción: {{ listaProductos[0].descripcion }}</p>
     <p>Costo: {{ listaProductos[0].costo }}</p>
-    <p>Precio: {{ listaProductos[0].precio }}</p>
 
   </div>
   <div class="col">
     <p>Foto: {{ listaProductos[0].foto }}</p>
     <p>Cantidad Existente: {{ listaProductos[0].cantidadExistente }}</p>
-
-    <p>Estado: {{ listaProductos[0].estado }}</p>
-    <p>Origen: {{ listaProductos[0].origen }}</p>
     <p>Prov ID: {{ listaProductos[0].provId }}</p>
+    <p>Fecha Adq: {{ listaProductos[0].fechaAdq }}</p>
+    <p>Precio: {{ listaProductos[0].precio }}</p>
   </div>
+
+  
 </div>
 <hr> 
 
@@ -49,21 +49,20 @@
         <th>Nombre</th>
         <th>Categoría</th>
         <th>Marcas ID</th>
-        <th>Versión</th>
+
         <th>Idiomas</th>
         <th>Jugadores</th>
         <th>Descripción</th>
         <th>Costo</th>
-        <th>Precio</th>
-        <th>Foto</th>
 
+        <th>Foto</th>
         <th>Cantidad Existente</th>
-        <th>Estado</th>
-        <th>Origen</th>
+
         <th>Prov ID</th>
+        <td>Fecha Adq</td>
+        <td>Precio</td>
         <th>Eliminar</th>
         <th>Actualizar</th>
-        
       </tr>
     </thead>
     <tbody>
@@ -74,18 +73,15 @@
         <td>{{ producto.nombre }}</td>
         <td>{{ producto.categoria }}</td>
         <td>{{ producto.marcasId }}</td>
-        <td>{{ producto.version }}</td>
         <td>{{ producto.idiomas }}</td>
         <td>{{ producto.jugadores }}</td>
         <td>{{ producto.descripcion }}</td>
         <td>{{ producto.costo }}</td>
-        <td>{{ producto.precio }}</td>
         <td>{{ producto.foto }}</td>
         <td>{{ producto.cantidadExistente }}</td>
-        <td>{{ producto.estado }}</td>
-        <td>{{ producto.origen }}</td>
         <td>{{ producto.provId }}</td>
-
+        <td>{{ producto.fechaAdq }}</td>
+        <td>{{ producto.precio}}</td>
         <td>
           <a [routerLink]="['/productoseliminar', producto._id]" class="btn btn-danger">
             <i class="fa fa-trash fa-lg" aria-hidden="true"></i>

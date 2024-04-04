@@ -34,13 +34,14 @@
                 <td>{{ usuario.password}}</td>
                 <td>{{ usuario.rol}}</td>
                 <td>
-                    <a [routerLink]="['/eliminarusuario', usuario._id]" class="btn btn-sm btn-danger">
-                        eliminar
+                    <a [routerLink]="['/actualizarusuario', usuario._id]" class="btn btn-sm btn-primary">
+                        <i class="bi bi-pencil-square"></i> Actualizar
                     </a>
                 </td>
                 <td>
-                    <a [routerLink]="['/actualizarusuario', usuario._id]" class="btn btn-sm btn-primary">
-                        <i class="bi bi-pencil-square"></i> Actualizar
+                    
+                    <a [routerLink]="['/eliminarusuario', usuario._id]" class="btn btn-sm btn-danger">
+                        eliminar
                     </a>
                 </td>
 
@@ -49,3 +50,6 @@
     </table>
 </div>
 
+<div class="container mt-3">
+    <button routerLink="/nuevousuario" class="btn btn-primary">Nuevo usuario</button>
+</div>

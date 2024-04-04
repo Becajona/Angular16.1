@@ -19,23 +19,22 @@ export class CatalogoProductosComponent implements OnInit {
   listaProductos: VideoJuego[] = [];
   page: number = 1; 
   itemsPerPage: number = 10; 
-  miProd: VideoJuego = {
-    nombre: '',
-    categoria: '',
-    marcasId: '',
-    version: '',
-    idiomas: '',
-    jugadores: 0,
-    descripcion: '',
-    costo: 0,
-    precio: 0,
-    foto: '',
-    cantidadExistente: 0,
-    estado: '',
-    origen: '',
-    provId: '',
-    _id: '' 
-  };
+  miProd: VideoJuego = {_id: '',
+  nombre: '',
+  categoria: '',
+  marcasId: '',
+
+  idiomas: '',
+  jugadores: 0, // Cambiado a string
+  descripcion: '',
+  costo: 0, // Cambiado a string
+  precio: 0, // Cambiado a string
+  foto: '',
+  cantidadExistente: 0, // Cambiado a string
+
+  provId: '',
+  fechaAdq: ''
+};
   imagen1: any;
 
   constructor(private videojuegoService: VideoJuegosService, private router: Router) { }

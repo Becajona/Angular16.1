@@ -20,7 +20,7 @@ export class EliminarUsuarioComponent implements OnInit {
   ngOnInit(): void {
     this.usuarioId = this.route.snapshot.paramMap.get('id');
     console.log(this.usuarioId);
-    // Redirige al catálogo de empleados
+  
     this.router.navigate(['/catalogoempleado']);
   }
 

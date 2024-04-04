@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { CatalogoUsuarioComponent } from './catalogo-usuario/catalogo-usuario.component';
 import { ActualizarUsuarioComponent } from './actualizar-usuario/actualizar-usuario.component';
 import { EliminarUsuarioComponent } from './eliminar-usuario/eliminar-usuario.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Importa ReactiveFormsModule
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 
 
 
