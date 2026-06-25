@@ -24,11 +24,12 @@ export class VideoJuegosService {
 
 
   //nuevoProducto
+
+  //nuevoProducto
   guardarProducto(producto: any): Observable<any> {
     const url = `${this.apiUrl}/nuevoProd`;
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    return this.http.post<any>(url, producto, { headers }).pipe(
+    return this.http.post<any>(url, producto).pipe(
       tap(() => console.log('Producto guardado correctamente')),
       catchError(err => {
         console.error('Error al guardar producto:', err);

@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 
-// Importa el servicio de proveedores
 import { ProveedoresService } from 'src/app/servicios/proveedores.service';
 
 @Component({
@@ -14,10 +13,10 @@ import { ProveedoresService } from 'src/app/servicios/proveedores.service';
   styleUrls: ['./nuevo-producto.component.css']
 })
 export class NuevoProductoComponent implements OnInit {
-  listaprovedores: any[] = []; // Cambia el tipo a any[]
+  listaprovedores: any[] = []; 
   productosForms!: FormGroup;
   imagen1: any;
-  miProd: any; // Remueve la inicialización del objeto miProd
+  miProd: any; 
 
   constructor(private proveedoresService: ProveedoresService,
     private fb: FormBuilder,
@@ -77,16 +76,13 @@ export class NuevoProductoComponent implements OnInit {
   }
 
   enviarProd() {
-    // Asignar los valores del formulario al objeto miProd
     this.miProd = this.productosForms.value;
 
-    // Asegúrate de que los campos numéricos sean convertidos a number antes de enviar
     this.miProd.jugadores = Number(this.miProd.jugadores);
     this.miProd.costo = Number(this.miProd.costo);
     this.miProd.cantidadExistente = Number(this.miProd.cantidadExistente);
     this.miProd.precio = Number(this.miProd.precio);
     
-    // Luego puedes continuar con el resto del código para enviar los datos al servidor...
     console.log("Datos a enviar al servidor:", this.miProd);
 
     this.new_product(this.miProd)

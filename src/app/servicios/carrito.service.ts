@@ -22,9 +22,7 @@ export class CarritoService {
   agregarNuevoCarrito(datos: any): Observable<any> {
     const url = `${this.baseUrl}/nuevo_carrito`;
 
-    // Verificar si la fecha de compra está definida y es una instancia de Date
     if (datos.fechaCompra && datos.fechaCompra instanceof Date) {
-      // Convertir la fecha a una cadena en formato ISO8601
       datos.fechaCompra = datos.fechaCompra.toISOString();
     }
 
@@ -43,10 +41,8 @@ export class CarritoService {
   private handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
-      // Error del cliente
       errorMessage = `Error: ${error.error.message}`;
     } else {
-      // El servidor devolvió un código de error
       errorMessage = `Código de error: ${error.status}, mensaje: ${error.message}`;
     }
     console.error(errorMessage);
@@ -56,9 +52,7 @@ export class CarritoService {
   actualizarCarrito(id: string, datos: any): Observable<any> {
     const url = `${this.baseUrl}/actualizar/${id}`;
 
-    // Verificar si la fecha de compra está definida y es una instancia de Date
     if (datos.fechaCompra && datos.fechaCompra instanceof Date) {
-      // Convertir la fecha a una cadena en formato ISO8601
       datos.fechaCompra = datos.fechaCompra.toISOString();
     }
 

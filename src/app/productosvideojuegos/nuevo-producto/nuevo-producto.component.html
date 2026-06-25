@@ -1,71 +1,68 @@
 <div class="container">
-  <h1>Nuevo Producto</h1>
-  <form [formGroup]="productosForms" (ngSubmit)="enviarProd()">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="nombre">Nombre</label>
-          <input type="text" class="form-control" formControlName="nombre" >
+    <h1>Nuevo Producto</h1>
+    <form [formGroup]="productosForms" (ngSubmit)="enviarProd()">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" formControlName="nombre" >
+          </div>
+          <div class="form-group">
+            <label for="categoria">Categoría</label>
+            <input type="text" class="form-control"  formControlName="categoria"  >
+          </div>
+          
+          
+          <div class="form-group">
+            <label for="marcasId">Marcas ID</label>
+            <input type="text" class="form-control"  formControlName="marcasId" >
+          </div>
+          
+          <div class="form-group">
+            <label for="idiomas">Idiomas</label>
+            <input type="text" class="form-control"  formControlName="idiomas" >
+          </div>
+          <div class="form-group">
+            <label for="jugadores">Jugadores</label>
+            <input type="number" class="form-control" formControlName="jugadores"  >
+          </div>
+          
         </div>
-        <div class="form-group">
-          <label for="categoria">Categoría</label>
-          <input type="text" class="form-control"  formControlName="categoria"  >
-        </div>
-        
-        
-        <div class="form-group">
-          <label for="marcasId">Marcas ID</label>
-          <input type="text" class="form-control"  formControlName="marcasId" >
-        </div>
-        
-        <div class="form-group">
-          <label for="idiomas">Idiomas</label>
-          <input type="text" class="form-control"  formControlName="idiomas" >
-        </div>
-        <div class="form-group">
-          <label for="jugadores">Jugadores</label>
-          <input type="number" class="form-control" formControlName="jugadores"  >
-        </div>
-        <div class="form-group">
-          <label for="descuento">precio</label>
-          <input type="number" class="form-control"  formControlName="descuento" >
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="descripcion">Descripción</label>
-          <textarea class="form-control" id="descripcion" formControlName="descripcion"  rows="3" placeholder="Ingrese la descripción del producto"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="costo">Costo</label>
-          <input type="number" class="form-control" id="costo" formControlName="costo"  placeholder="Ingrese el costo del producto">
-        </div>
-        <div class="form-group">
-          <label for="foto">Foto</label>
-          <input type="file" class="form-control" id="foto" formControlName="foto" accept="image/*" (change)="convertir_B64($event)" required>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="descripcion">Descripción</label>
+            <textarea class="form-control" id="descripcion" formControlName="descripcion"  rows="3" placeholder="Ingrese la descripción del producto"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="costo">Costo</label>
+            <input type="number" class="form-control" id="costo" formControlName="costo"  placeholder="Ingrese el costo del producto">
+          </div>
+          <div class="form-group">
+            <label for="foto">Foto</label>
+            <input type="file" class="form-control" id="foto" formControlName="foto" accept="image/*" (change)="convertir_B64($event)" required>
+    
+          </div>
+          <div class="form-group">
+            <label for="cantidadExistente">Cantidad Existente</label>
+            <input type="number" class="form-control" id="cantidadExistente" formControlName="cantidadExistente"  placeholder="Ingrese la cantidad existente del producto">
+          </div>
   
-        </div>
-        <div class="form-group">
-          <label for="cantidadExistente">Cantidad Existente</label>
-          <input type="number" class="form-control" id="cantidadExistente" formControlName="cantidadExistente"  placeholder="Ingrese la cantidad existente del producto">
-        </div>
-
-        <div class="form-group">
-          <label for="fechaAdq">Fecha de Adquisición</label>
-          <input type="date" class="form-control" id="fechaAdq" formControlName="fechaAdq" placeholder="Ingrese la fecha de adquisición">
-        </div>
-        <div class="form-group">
-          <label for="provId">Proveedor ID</label>
-          <select #provIdControl class="form-control" (change)="get_id_proveedor(provIdControl.value)" id="provId" formControlName="provId" required>
-            <option value="">Selecciona un proveedor</option>
-            <option *ngFor="let proveedor of listaprovedores" [value]="proveedor._id">{{ proveedor.nombre }}</option>
-          </select>
-        </div>
-      </div> 
-    </div>
-    <br>
-    <button type="submit" class="me-2 btn btn-outline-dark">Crear Producto</button>
-  </form>
-</div>
-<br>
-<button routerLink="/productosCatalogos" class="btn btn-secondary">Cancelar</button>
+          <div class="form-group">
+            <label for="fechaAdq">Fecha de Adquisición</label>
+            <input type="date" class="form-control" id="fechaAdq" formControlName="fechaAdq" placeholder="Ingrese la fecha de adquisición">
+          </div>
+          <div class="form-group">
+            <label for="provId">Proveedor ID</label>
+            <select #provIdControl class="form-control" (change)="get_id_proveedor(provIdControl.value)" id="provId" formControlName="provId" required>
+              <option value="">Selecciona un proveedor</option>
+              <option *ngFor="let proveedor of listaprovedores" [value]="proveedor._id">{{ proveedor.nombre }}</option>
+            </select>
+          </div>
+        </div> 
+      </div>
+      <br>
+      <button type="submit" class="me-2 btn btn-outline-dark">Crear Producto</button>
+    </form>
+  </div>
+  <br>
+  <button routerLink="/productosCatalogos" class="btn btn-secondary">Cancelar</button>

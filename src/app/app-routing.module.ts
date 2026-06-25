@@ -44,7 +44,6 @@ import { ActualizarProovedorComponent } from './proveedores/actualizar-proovedor
 
 //Productos videoJuegos
 import { CatalogoProductosComponent } from './productosvideojuegos/catalogo-productos/catalogo-productos.component';
-import { BuscarProductosComponent } from './productosvideojuegos/buscar-productos/buscar-productos.component';
 import { NuevoProductoComponent } from './productosvideojuegos/nuevo-producto/nuevo-producto.component';
 import { EliminarComponent } from './productosvideojuegos/eliminar/eliminar.component';
 import { ActualizarProductoComponent } from './productosvideojuegos/actualizar-producto/actualizar-producto.component';
@@ -73,10 +72,6 @@ const routes: Routes = [
     path:'productoNuevo',
       component: NuevoProductoComponent
     },
-    {
-      path:'buscarProducto',
-      component: BuscarProductosComponent
-      },
       {
         path:'proveedor',
         component: ProveedoresModule

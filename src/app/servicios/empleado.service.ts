@@ -11,12 +11,11 @@ export class EmpleadoService {
 
   constructor(private http: HttpClient) { }
 
-  // Función para obtener todos los empleados
   obtenerTodosLosEmpleados(): Observable<any[]> {
     const url = `${this.apiUrl}/get_all`; 
     return this.http.get<any[]>(url).pipe(
       tap(data => console.log('Datos obtenidos del servidor:', data)), 
-      catchError(err => { // Manejo de errores
+      catchError(err => { 
         console.error('Error al obtener los datos del servidor:', err);
         return throwError(err); 
       })
@@ -27,14 +26,13 @@ export class EmpleadoService {
     const url = `${this.apiUrl}/nuevoempleado`; 
     return this.http.post<any>(url, empleado).pipe(
       tap(() => console.log('Empleado guardado correctamente')), 
-      catchError(err => { // Manejo de errores
+      catchError(err => {
         console.error('Error al guardar empleado:', err);
         return throwError(err); 
       })
     );
   }
 
-  // Función para actualizar un empleado por su ID
   actualizarEmpleadoPorId(id: string, empleado: any): Observable<any> {
     const url = `${this.apiUrl}/actualizar/${id}`; 
     return this.http.put<any>(url, empleado).pipe(
@@ -46,7 +44,6 @@ export class EmpleadoService {
     );
   }
   
-  // Función para obtener un empleado por su ID
   obtenerEmpleadoPorId(id: string): Observable<any> {
     const url = `${this.apiUrl}/porID/${id}`; 
     return this.http.get<any>(url);

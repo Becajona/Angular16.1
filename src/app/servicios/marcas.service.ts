@@ -58,7 +58,6 @@ export class MarcasService {
   
 
 
-  // Método para eliminar una marca por su ID
   eliminarMarca(id: string): Observable<any> {
     const url = `${this.apiUrl}/eliminar/${id}`; 
     return this.http.delete(url).pipe(
